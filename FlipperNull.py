@@ -36,12 +36,12 @@ def FlipperNull():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀""", "yellow"))
 
-	print(colored("""  _____ _ _                       _   _       _ _  """, "yellow"))
-	print(colored(""" |  ___| (_)_ __  _ __   ___ _ __| \ | |_   _| | | """, "yellow"))
-	print(colored(""" | |_  | | | '_ \| '_ \ / _ \ '__|  \| | | | | | | """, "yellow"))
-	print(colored(""" |  _| | | | |_) | |_) |  __/ |  | |\  | |_| | | | """, "yellow"))
-	print(colored(""" |_|   |_|_| .__/| .__/ \___|_|  |_| \_|\__,_|_|_| """, "yellow"))
-	print(colored("""           |_|   |_|                               """, "yellow"))
+    print(colored("""  _____ _ _                       _   _       _ _  """, "yellow"))
+    print(colored(""" |  ___| (_)_ __  _ __   ___ _ __| \ | |_   _| | | """, "yellow"))
+    print(colored(""" | |_  | | | '_ \| '_ \ / _ \ '__|  \| | | | | | | """, "yellow"))
+    print(colored(""" |  _| | | | |_) | |_) |  __/ |  | |\  | |_| | | | """, "yellow"))
+    print(colored(""" |_|   |_|_| .__/| .__/ \___|_|  |_| \_|\__,_|_|_| """, "yellow"))
+    print(colored("""           |_|   |_|                               """, "yellow"))
     for i in f_arg:
         for j in s_arg:
             print('termux-infrared-transmit -f', str(i), str(j))

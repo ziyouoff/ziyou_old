@@ -41,14 +41,15 @@ def FlipperNull():
     print(colored(""" | |_  | | | '_ \| '_ \ / _ \ '__|  \| | | | | | | """, "yellow"))
     print(colored(""" |  _| | | | |_) | |_) |  __/ |  | |\  | |_| | | | """, "yellow"))
     print(colored(""" |_|   |_|_| .__/| .__/ \___|_|  |_| \_|\__,_|_|_| """, "yellow"))
-    print(colored("""           |_|   |_|                               """, "yellow"))
-    for i in f_arg:
-        for j in s_arg:
-            print('termux-infrared-transmit -f', str(i), str(j))
+    print(colored("""           |_|   |_| TG: ziyouoff                  """, "yellow"))
+    
+    for i in range(37999, 39001):
+        for j in range(10000):
+            print('Несущая частота ИК-излучения:', str(i), '.........Ключь:',  str(j))
             try:
                 os.system('termux-infrared-transmit -f ' + str(i) + ' ' + str(j))
             except:
-                print('[!]USE IK PORT BLYAT')
-
-
-    
+                try:
+                    os.system('pkg install termux-api')
+                except:
+                    print('[!]INSTALL TERMUX:API AND USE IK PORT BLYAT')

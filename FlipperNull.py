@@ -12,6 +12,10 @@ s_arg = [38029, 4444,4418,552 ,1657,
  16575521657,552, 1657, 552, 47175, 4444, 
 4418,552,552,552,97137]
 
+Gz = colored(input('[+]Введите частоту в Гц (1 кГц = 1000 Гц'):, "yellow"))
+key = colored(input('[+]Введите нудные ключи через запятую:', "yellow"))
+
+
 def FlipperNull():
     print(colored("""
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡠⠤⠤⠤⠤⠤⠤⠤⠤⣄⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -43,13 +47,13 @@ def FlipperNull():
     print(colored(""" |_|   |_|_| .__/| .__/ \___|_|  |_| \_|\__,_|_|_| """, "yellow"))
     print(colored("""           |_|   |_| TG: ziyouoff                  """, "yellow"))
     
-    for i in range(37999, 39001):
-        for j in range(10000):
-            print('Несущая частота ИК-излучения:', str(i), '.........Ключь:',  str(j))
-            try:
-                os.system('termux-infrared-transmit -f ' + str(i) + ' ' + str(j))
-            except:
-                try:
-                    os.system('pkg install termux-api')
-                except:
-                    print('[!]INSTALL TERMUX:API AND USE IK PORT BLYAT')
+    #for i in range(37999, 39001):
+     #   for j in range(10000):
+      #      print('Несущая частота ИК-излучения:', str(i), '.........Ключь:',  str(j))
+try:
+	os.system('termux-infrared-transmit -f ' + str(Gz) + ' ' + str(key))
+except:
+	try:
+		os.system('pkg install termux-api')
+	except:
+		print('[!]INSTALL TERMUX:API AND USE IK PORT BLYAT')

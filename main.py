@@ -84,6 +84,7 @@ def main_menu():
     elif select == '2':
         from port_scan import main
         main()
+        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
         mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
         if mrnu_or_exit == '1':
             baner()

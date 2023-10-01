@@ -12,8 +12,7 @@ s_arg = [38029, 4444,4418,552 ,1657,
  16575521657,552, 1657, 552, 47175, 4444, 
 4418,552,552,552,97137]
 
-Gz = input(colored('[+]Введите частоту в Гц (1 кГц = 1000 Гц'):, "yellow"))
-key = input(colored('[+]Введите нудные ключи через запятую:', "yellow"))
+
 
 
 def FlipperNull():
@@ -50,10 +49,26 @@ def FlipperNull():
     #for i in range(37999, 39001):
      #   for j in range(10000):
       #      print('Несущая частота ИК-излучения:', str(i), '.........Ключь:',  str(j))
-try:
-	os.system('termux-infrared-transmit -f ' + str(Gz) + ' ' + str(key))
-except:
-	try:
-		os.system('pkg install termux-api')
-	except:
-		print('[!]INSTALL TERMUX:API AND USE IK PORT BLYAT')
+
+def ir_hand():
+    Gz = input(colored('\n[+]Введите частоту в Гц (1 кГц = 1000 Гц): ', "red"))
+    key = input(colored('[+]Введите нудные ключи через запятую: ', "red"))
+    try:
+        os.system('termux-infrared-transmit -f ' + str(Gz) + ' ' + str(key))
+    except:
+        try:
+            os.system('pkg install termux-api')
+        except:
+            print('[!]INSTALL TERMUX:API AND USE IK PORT BLYAT')
+
+os.system('clear')
+FlipperNull()
+
+print(colored('[1] - Ручной ввод     |     [2] - Брутфорс', "blue"))
+select = input(colored("""\n[+]> """, "red"))
+
+if select == '1':
+    ir_hand()
+elif select == '2':
+    print(colored('[!]ПОка что работает только ручное управление ИК-портом :( ', "red"))
+    ir_hand

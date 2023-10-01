@@ -22,7 +22,10 @@ def port_scan():
         chek_port(ip, i)
 
 def wifi_scan(ip):
-    print(os.system('nmap -sn ' + str(ip) + '/24'))
+    try:
+        print(os.system('nmap -sn ' + str(ip) + '/24'))
+    except:
+        os.system('apt install nmap')
 
 
 

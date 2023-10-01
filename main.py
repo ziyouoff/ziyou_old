@@ -82,9 +82,15 @@ def main_menu():
             exit
 	
     elif select == '2':
-        from port_scan import port_scan
-        os.system('clear')
-        port_scan()
+        from port_scan import main
+        main()
+        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        if mrnu_or_exit == '1':
+            baner()
+            main_menu()
+
+        elif mrnu_or_exit == '2':
+            exit
         
 
 

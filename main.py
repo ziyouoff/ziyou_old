@@ -1,12 +1,5 @@
 from termcolor import colored
-import ipaddress
-import netifaces
-import requests
-import argparse
-import platform
-import socket
 import time
-import sys
 import os
 
 os.system('clear')

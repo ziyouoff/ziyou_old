@@ -4,6 +4,17 @@ import random
 def soft_info():
     print(f'''В КС 3 займусь фиксом''')
 
+Bye_Bye = f'''
+_______________________________________________
+    ____                     ____              
+    /   )                    /   )             
+---/__ /-----------__-------/__ /-----------__-
+  /    )   /   / /___)     /    )   /   / /___)
+_/____/___(___/_(___ _____/____/___(___/_(___ _
+             /                        /        
+         (_ /                     (_ /         
+'''
+
 telegram_logo = f'''
 @@@@@@@@@@@@@@@@@@%%**+=-------------++*%%@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@#+=------------------------=+#@@@@@@@@@@@@@@@
@@ -285,19 +296,20 @@ def print_start():
     r_baner = random.randint(1, 5)
     r_ziyou = random.randint(1, 7)
 
-    if r_baner == 1: print(colored(baner_1, "blue"))
-    elif r_baner == 2: print(colored(baner_2, "white"))
-    elif r_baner == 3: print(colored(baner_3, "white"))
-    elif r_baner == 4: print(colored(baner_4, "blue"))
-    elif r_baner == 5: print(colored(baner_5, "white"))
+    if r_baner == 1: print(colored(baner_1.center(len(baner_1) + 150), "blue"))
+    elif r_baner == 2: print(colored(baner_2.center(len(baner_2) + 150), "white"))
+    elif r_baner == 3: print(colored(baner_3.center(len(baner_3) + 150), "white"))
+    elif r_baner == 4: print(colored(baner_4.center(len(baner_4) + 150), "blue"))
+    elif r_baner == 5: print(colored(baner_5.center(len(baner_5) + 150), "white"))
     
 
-    if r_ziyou == 1: print(colored(ziyou_1, "yellow"))
-    elif r_ziyou == 2: print(colored(ziyou_2, "yellow"))
-    elif r_ziyou == 3: print(colored(ziyou_3, "cyan"))
-    elif r_ziyou == 4: print(colored(ziyou_4, "red"))
-    elif r_ziyou == 5: print(colored(ziyou_5, "green"))
-    elif r_ziyou == 6: print(colored(ziyou_6, "white"))
-    elif r_ziyou == 7: print(colored(ziyou_7, "white"))
+    if r_ziyou == 1: print(colored(ziyou_1.center(len(ziyou_1) + 150), "yellow"))
+    elif r_ziyou == 2: print(colored(ziyou_2.center(len(ziyou_2) + 150), "yellow"))
+    elif r_ziyou == 3: print(colored(ziyou_3.center(len(ziyou_3) + 150), "cyan"))
+    elif r_ziyou == 4: print(colored(ziyou_4.center(len(ziyou_4) + 150), "red"))
+    elif r_ziyou == 5: print(colored(ziyou_5.center(len(ziyou_5) + 150), "green"))
+    elif r_ziyou == 6: print(colored(ziyou_6.center(len(ziyou_6) + 150), "white"))
+    elif r_ziyou == 7: print(colored(ziyou_7.center(len(ziyou_7) + 150), "white"))
 
 def print_telegram_logo(): print(colored(telegram_logo, "blue"))
+def print_bye_bye(): print(Bye_Bye)

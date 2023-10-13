@@ -10,8 +10,12 @@ except:
 
 
 def download_db(URL, NAME):
+    osname = os.name
     output_file = os.path.dirname(os.path.abspath(__file__))
-    output_file = output_file + "\src\\" + NAME
+    if osname == 'nt': 
+        output_file = output_file + "\src\\" + NAME
+    elif osname == 'posix': 
+        output_file = output_file + "/src/" + NAME
 
     gdown.download(URL, output_file, quiet=False, fuzzy=True)
     

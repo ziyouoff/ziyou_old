@@ -6,7 +6,7 @@ def pasports_1 (FIO):
             for line in file:
                 data = line.strip().split('|')  
                 if len(data) >= 8:
-                    if FIO in data[0] or data[0] in FIO:
+                    if FIO.replace(' ', '') in data[0].replace(' ', '') or data[0].replace(' ', '') in FIO.replace(' ', ''):
                         print(colored('┌──────────────────────────────────────────────────────', "green"))
                         print(colored('│Найдено в базе Паспортов(09.2022)', "green"))
                         print(colored('├──────────────────────────────────────────────────────', "green"))
@@ -31,7 +31,7 @@ def tele2_1_06_22(FIO):
             for line in file:
                 data = line.strip().split(';')  
                 if len(data) >= 3:
-                    if FIO in data[1] or data[1] in FIO:
+                    if FIO.replace(' ', '') in data[1].replace(' ', '') or data[1].replace(' ', '') in FIO.replace(' ', ''):
                         print(colored('┌──────────────────────────────────────────────────────', "green"))
                         print(colored('│Найдено в базе Tele2(06.2022)', "green"))
                         print(colored('├──────────────────────────────────────────────────────', "green"))
@@ -49,10 +49,9 @@ def zdravcity_1_01_23(FIO):
     try:
         with open('src//zdravcity.ru_1_01_2023.csv', 'r', encoding='utf-8') as file:        
             for line in file:
-                #print(line)
                 data = line.strip().split('		')  
                 if len(data) >= 8:
-                    if FIO in data[2] or data[2] in FIO:
+                    if FIO.replace(' ', '') in data[2].replace(' ', '') or data[2].replace(' ', '') in FIO.replace(' ', ''):
                         print(colored('┌──────────────────────────────────────────────────────', "green"))
                         print(colored('│Найдено в базе zdravcity(01.1023)', "green"))
                         print(colored('├──────────────────────────────────────────────────────', "green"))
@@ -74,7 +73,7 @@ def gemotest (FIO):
             for line in file:
                 data = line.strip().split('	')  
                 if len(data) >= 27 and data[1] in FIO:
-                    if FIO in data[1] or FIO in data[2] or FIO in data[3] or data[1] in FIO or data[2] in FIO or data[3] in FIO:
+                    if FIO.replace(' ', '') in data[1].replace(' ', '') or FIO.replace(' ', '') in data[2].replace(' ', '') or FIO.replace(' ', '') in data[3].replace(' ', ''):
                         print(colored('┌──────────────────────────────────────────────────────', "green"))
                         print(colored('│Найдено в базе gemotest', "green"))
                         print(colored('├──────────────────────────────────────────────────────', "green"))
@@ -105,6 +104,27 @@ def gemotest (FIO):
                         print(colored('├actual_region: ' + data[24].strip(), "green"))
                         print(colored('├actual_address: ' + data[25].strip(), "green"))
                         print(colored('├birthissued_by: ' + data[26].strip(), "green"))
+                        print(colored('└──────────────────────────────────────────────────────', "green"))
+
+        print(colored(f"Номер телефона в 4-oй базе не найден :( ", "red"))
+    except:
+        print(colored('База не найдена или произошла иная ошибка, продожаю поиск в других базах', "red"))
+
+
+def ru_base (FIO):
+    try:
+        with open('src//ru_base.csv', 'r', encoding='utf-8') as file:
+            for line in file:
+                data = line.strip().split(',')  
+                if len(data) >= 3 and data[1] in FIO:
+                    if FIO.replace(' ', '') in data[1].replace(' ', ''):
+                        print(colored('┌──────────────────────────────────────────────────────', "green"))
+                        print(colored('│Найдено в базе gemotest', "green"))
+                        print(colored('├──────────────────────────────────────────────────────', "green"))
+                        print(colored('├ФИО: ' + data[0].strip(), "green"))
+                        print(colored('├Дата рождения: ' + data[1].strip(), "green"))
+                        print(colored('├Номер телефона: ' + data[2].strip(), "green"))
+                        print(colored('├Почта: ' + data[3].strip(), "green"))
                         print(colored('└──────────────────────────────────────────────────────', "green"))
 
         print(colored(f"Номер телефона в 4-oй базе не найден :( ", "red"))

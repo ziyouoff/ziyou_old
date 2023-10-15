@@ -1,21 +1,94 @@
-import os
+import os 
+import pickle
 import baners
-import gdown
+import main
+
+try:
+    from pystyle import Center
+except:
+    os.system('pip install pystyle')
+    from pystyle import Center
 
 try:
     from termcolor import colored
 except:
     os.system('pip install termcolor')
+    from termcolor import colored
 
+
+############################################################
+############################################################
+############################################################
+if os.path.exists('data.pkl'):
+    # Восстановление переменных
+    with open('data.pkl', 'rb') as file:
+        restored_data = pickle.load(file)
+    print(restored_data)
+    
+else:
+    # Сохранение переменных
+    data = {'devise': 'M'}
+    with open('data.pkl', 'wb') as file:
+        pickle.dump(data, file)
+    
+def setings():
+    baners.print_ascll_setings()
+
+    with open('data.pkl', 'wb') as file:
+        pickle.dump(data, file)
+        devise = data['devise']
+
+    print(Center.XCenter(colored('┌──────────────────────────────────┐', "yellow")))
+    print(Center.XCenter(colored('|            Настройки             |', "yellow")))
+    print(Center.XCenter(colored('├──────────────────────────────────┤', "yellow")))
+    print(Center.XCenter(colored('├[1] - Выбрать Устройство       [' + devise + ']│', "yellow"))) 
+    print(Center.XCenter(colored('│                                  │', "yellow"))) 
+    print(Center.XCenter(colored('├[b] - Назад                       │', "yellow"))) 
+    print(Center.XCenter(colored('└──────────────────────────────────┘', "yellow")))
+
+    select = input(Center.XCenter(colored("""\n[+]select > """, "red")))
+
+    if select == '1':
+
+        print(Center.XCenter(colored('┌──────────────────────────────────┐', "yellow")))
+        print(Center.XCenter(colored('│"M" - Мобильный вид софта         │', "yellow")))
+        print(Center.XCenter(colored('│"P" - Вид софта софта для PC      │', "yellow")))
+        print(Center.XCenter(colored('└──────────────────────────────────┘', "yellow")))
+
+        select = input(Center.XCenter(colored("""\n[+]select > """, "red")))
+
+        if select == 'M':
+            data['devise'] = 'M'
+            with open('data.pkl', 'wb') as file:
+                pickle.dump(data, file)
+
+        elif select == 'P':
+            data['devise'] = 'P'
+            with open('data.pkl', 'wb') as file:
+                pickle.dump(data, file)
+
+    elif select == 'b':
+        main_menu()
+
+     
+
+############################################################
+############################################################
+############################################################
 
 
 def download_db(URL, NAME):
+    import gdown
     osname = os.name
     output_file = os.path.dirname(os.path.abspath(__file__))
     if osname == 'nt': 
         output_file = output_file + "\src\\" + NAME
     elif osname == 'posix': 
         output_file = output_file + "/src/" + NAME
+
+    YorN = input('Вы уверены что хотите установить базу {name}? [Y/n]: ')
+    if YorN == 'n':
+        main.main_menu()
 
     gdown.download(URL, output_file, quiet=False, fuzzy=True)
     
@@ -36,6 +109,10 @@ def start_serch_name():
     fio = input(colored("[+]Введите имя: ", "cyan"))
 
     serch_name.pasports_1(fio)
+    serch_name.tele2_1_06_22(fio)
+    serch_name.zdravcity_1_01_23(fio)
+    serch_name.gemotest(fio)
+    serch_name.ru_base(fio)
 
 ##############################
 
@@ -63,13 +140,14 @@ def start_serch_telegram():
 ##############################
 
 def start_serch():
-    print(colored('┌──────────────────────────────────┐', "yellow"))
-    print(colored('├[1] - Поиск по номеру             │', "yellow"))
-    print(colored('├[2] - Поиск по имени              │', "yellow"))
-    print(colored('├[3] - Поиск по user_name telegram │', "yellow"))
-    print(colored('│                                  │', "yellow"))
-    print(colored('├[b] - Вернутся                    │', "yellow"))
-    print(colored('└──────────────────────────────────┘', "yellow"))
+    baners.print_start()
+    print(Center.XCenter(colored('┌──────────────────────────────────┐', "yellow")))
+    print(Center.XCenter(colored('├[1] - Поиск по номеру             │', "yellow")))
+    print(Center.XCenter(colored('├[2] - Поиск по имени              │', "yellow")))
+    print(Center.XCenter(colored('├[3] - Поиск по user_name telegram │', "yellow")))
+    print(Center.XCenter(colored('│                                  │', "yellow")))
+    print(Center.XCenter(colored('├[b] - Вернутся                    │', "yellow")))
+    print(Center.XCenter(colored('└──────────────────────────────────┘', "yellow")))
 
     select_info_type = input(colored("""\n[+]>""", 'cyan'))
 
@@ -84,23 +162,24 @@ def start_serch():
 ############################################################
 
 def install():
-    print(colored('┌───────────────────┐     ┌───────────────────────┐', "green"))
-    print(colored('│Установка библиотек│     │     Установка баз     │', "light_green"))
-    print(colored('├───────────────────┤     ├───────────────────────┤', "green"))
-    print(colored('├[L1]socket         |     ├[B1]ZdravCity(01.2023) |', "light_green"))
-    print(colored('├[L2]requests       |     ├[B2]Tele2(06.2022)     |', "green"))
-    print(colored('├[L3]ipaddress      |     ├[B3]Паспорта 1         |', "light_green"))
-    print(colored('├[L4]netifaces      |     ├[B4]Gemotest           |', "green"))
-    print(colored('├[L5]pyshark        |     ├[B5]DNS_1 (09.2022)    |', "light_green"))
-    print(colored('├[L6]Tshark         |     ├[B6]ТГ база 1          |', "green"))
-    print(colored('├[L7]nmap           |     ├[B7]ТГ база 2 Глаз Бога|', "light_green"))
-    print(colored('├[L8]scapy          |     ├[B8]ТГ база 3 Челябинск|', "green"))
-    print(colored('├[L9]GDown          |     |                       |', "light_green"))
-    print(colored('|                   |     |                       |', "green"))
-    print(colored('├[La]INSTALL ALL    |     |[Ba]INSTALL ALL        |', "light_green"))
-    print(colored('├[b]Вернутся        |     |[b]Вернутся            |', "green"))
-    print(colored('└───────────────────┘     └───────────────────────┘', "light_green"))
-    print('Пссс... Базы DNS и ZdravSity не подключены, можете пока не качать')
+    print(Center.XCenter(colored('┌───────────────────┐     ┌────────────────────────────────┐', "green")))
+    print(Center.XCenter(colored('│Установка библиотек│  L  │         Установка баз          │', "light_green")))
+    print(Center.XCenter(colored('├───────────────────┤  o  ├────────────────────────────────┤', "green")))
+    print(Center.XCenter(colored('├[L1]socket         |  v  ├[B1]ZdravCity(01.2023)   1.16 Гб|', "light_green")))
+    print(Center.XCenter(colored('├[L2]requests       |  e  ├[B2]Tele2(06.2022)         67 Мб|', "green")))
+    print(Center.XCenter(colored('├[L3]ipaddress      |     ├[B3]Паспорта            1 128 Кб|', "light_green")))
+    print(Center.XCenter(colored('├[L4]netifaces      |     ├[B4]Gemotest             7.76 Гб|', "green")))
+    print(Center.XCenter(colored('├[L5]pyshark        |  i  ├[B5]DNS_1 [09.2022]       785 Мб|', "light_green")))
+    print(Center.XCenter(colored('├[L6]Tshark         |  s  ├[B6]ТГ база 1            1.92 Гб|', "green")))
+    print(Center.XCenter(colored('├[L7]nmap           |     ├[B7]ТГ база 2 Глаз Бога  3.33 Мб|', "light_green")))
+    print(Center.XCenter(colored('├[L8]scapy          |     ├[B8]ТГ база 3 Челябинск  1.30 Мб|', "green")))
+    print(Center.XCenter(colored('├[L9]GDown          |     |[B9]Ru база ФИО-номер    45.9 Мб|', "light_green")))
+    print(Center.XCenter(colored('├[L10]PyStile       |     |                                |', "green")))
+    print(Center.XCenter(colored('|                   |  w  |                                |', "light_green")))
+    print(Center.XCenter(colored('├[La]INSTALL ALL    |  a  |[Ba]INSTALL ALL          11.7 Гб|', "green")))
+    print(Center.XCenter(colored('├[b]Вернутся        |  r  |[b]Вернутся                     |', "light_green")))
+    print(Center.XCenter(colored('└───────────────────┘     └────────────────────────────────┘', "green")))
+    print(Center.XCenter('Пссс... Базы DNS и ZdravSity не подключены, можете пока не качать'))
 
     install_input = input(colored("""\n[+]> """, "red"))
 
@@ -210,6 +289,16 @@ def install():
     except:
         print(colored('[!]GDown не уствноылен', "red"))
 
+    try: 
+        if install_input == 'L10': 
+            os.system('pip install pystyle')
+            uclear()
+            baners.print_start()
+            print(colored('[+]pystyle установлен', "green")) 
+            install()
+    except:
+        print(colored('[!]pystyle не уствноылен', "red"))
+
     if install_input == 'La': 
         os.system('pip install socket')             
         os.system('pip install requests==2.31.0')   
@@ -314,6 +403,17 @@ def install():
         print(colored('Telegram база 3(Челябинмк) не установлена', "red"))
         install()
 
+    try:
+        if install_input == 'B9': 
+            download_db('https://drive.google.com/file/d/15WI8rEM5SLXdLQGjxi0DMQspGZpqgtjB/view?usp=sharing', 'ru_base.csv')
+            uclear()
+            print(colored('База установлена', "green"))
+            install()
+    except:
+        uclear()
+        print(colored('База не установлена', "red"))
+        install()
+
     
     
     
@@ -325,30 +425,34 @@ def install():
 
 def main_menu():
     baners.print_start()
-    main_menu_up = colored('┌──────────────────────────┬─────────────────────────┐', "red")
-    main_menu_ei = colored('├[e] - exit                ├[i] - info               |', "red")
-    main_menu_sd = colored('├[s] - setings             ├[d] - install            |', "red")
-    main_menu_16 = colored('├[1] - Узнать ip telegram  ├[6] - ???                |', "cyan")
-    main_menu_27 = colored('├[2] - Сканер портов       ├[7] - Пробив по базам    |', 'blue')
-    main_menu_38 = colored('├[3] - SMS-Bomber          ├[8] - DDoS               |', 'cyan')
-    main_menu_49 = colored('├[4] - FlipperNull         ├[9] - AirDos             |', 'blue')
-    main_menu_50 = colored('├[5] - SQLmap              ├[10] - ???               |', 'cyan')
-    main_menu_dn = colored('└──────────────────────────┸─────────────────────────┘', "blue")
-
-    print(main_menu_up)
-    print(main_menu_ei)
-    print(main_menu_sd)
-    print(main_menu_16)
-    print(main_menu_27)
-    print(main_menu_38)
-    print(main_menu_49)
-    print(main_menu_50)
-    print(main_menu_dn)
+    mm_1 =  colored('┌────────────────────────────────────────────────────┐', "red").center(20)
+    mm_2 =  colored('|                    Главное Меню                    |', "red")
+    mm_3 =  colored('├──────────────────────────┬─────────────────────────┤', "red")
+    mm_4 =  colored('├[e] - exit                ├[i] - info               |', "red")
+    mm_5 =  colored('├[s] - setings             ├[d] - install            |', "red")
+    mm_6 =  colored('├[1] - Узнать ip telegram  ├[6] - WiFite 3           |', "cyan")
+    mm_7 =  colored('├[2] - Сканер портов       ├[7] - Пробив по базам    |', 'blue')
+    mm_8 =  colored('├[3] - SMS-Bomber          ├[8] - DDoS               |', 'cyan')
+    mm_9 =  colored('├[4] - FlipperNull         ├[9] - AirDos             |', 'blue')
+    mm_10 = colored('├[5] - SQLmap              ├[10] - ???               |', 'cyan')
+    mm_11 = colored('└──────────────────────────┸─────────────────────────┘', "blue")
     
+    print(Center.XCenter(mm_1))
+    print(Center.XCenter(mm_2))
+    print(Center.XCenter(mm_3))
+    print(Center.XCenter(mm_4))
+    print(Center.XCenter(mm_5))
+    print(Center.XCenter(mm_6))
+    print(Center.XCenter(mm_7))
+    print(Center.XCenter(mm_8))
+    print(Center.XCenter(mm_9))
+    print(Center.XCenter(mm_10))
+    print(Center.XCenter(mm_11))
 
     print('')
 	
-    select = input(colored("""\n[+]> """, "red"))
+    #input_text = Center.XCenter()"""\n[+]> """, "red"
+    select = input(Center.XCenter(colored("""\n[+]> """, "red")))
 
     
 #################################################
@@ -502,6 +606,10 @@ def main_menu():
 #################################################
 
     elif select == '10':
+        with open('data.pkl', 'rb') as file:
+            data = pickle.load(file)  
+            print(data['devise'])
+         
         print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
         mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
         if mrnu_or_exit == '1':
@@ -515,9 +623,11 @@ def main_menu():
 
 #################################################
 
+    elif select == 's':
+        setings()
+
     elif select == 'd':
         install()
-
 
     elif select == 'i': 
         baners.soft_info()
@@ -531,5 +641,6 @@ def main_menu():
     else: 
         uclear()
         main_menu()
+  
 
 main_menu()

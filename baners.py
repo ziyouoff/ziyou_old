@@ -65,6 +65,49 @@ setings_smol = '''
                                                        
 '''
 
+H = '''
+██╗  ██╗
+██║  ██║
+███████║
+██╔══██║
+██║  ██║
+╚═╝  ╚═╝      
+'''
+
+He = '''
+██╗  ██╗███████╗
+██║  ██║██╔════╝
+███████║█████╗  
+██╔══██║██╔══╝  
+██║  ██║███████╗
+╚═╝  ╚═╝╚══════╝
+'''
+
+hel = '''
+██╗  ██╗███████╗██╗     
+██║  ██║██╔════╝██║     
+███████║█████╗  ██║     
+██╔══██║██╔══╝  ██║     
+██║  ██║███████╗███████╗
+╚═╝  ╚═╝╚══════╝╚══════╝
+'''
+hell = '''
+██╗  ██╗███████╗██╗     ██╗     
+██║  ██║██╔════╝██║     ██║     
+███████║█████╗  ██║     ██║     
+██╔══██║██╔══╝  ██║     ██║     
+██║  ██║███████╗███████╗███████╗
+╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+'''
+hello = '''
+██╗  ██╗███████╗██╗     ██╗      ██████╗ 
+██║  ██║██╔════╝██║     ██║     ██╔═══██╗
+███████║█████╗  ██║     ██║     ██║   ██║
+██╔══██║██╔══╝  ██║     ██║     ██║   ██║
+██║  ██║███████╗███████╗███████╗╚██████╔╝
+╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝ 
+                                         '''
+
 telegram_logo = f'''
 @@@@@@@@@@@@@@@@@@%%**+=-------------++*%%@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@#+=------------------------=+#@@@@@@@@@@@@@@@
@@ -390,3 +433,47 @@ def print_ascll_setings():
         print(Center.XCenter(colored(setings_big, 'yellow')))
     except:
        pass
+    
+def print_hello():
+   import main
+   import time
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
+   time.sleep(0.6)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(He, "cyan"))))
+   time.sleep(0.6)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hel, "cyan"))))
+   time.sleep(0.6)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hell, "cyan"))))
+   time.sleep(0.6)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hello, "cyan"))))
+   time.sleep(1)
+
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hell, "cyan"))))
+   time.sleep(0.3)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hel, "cyan"))))
+   time.sleep(0.3)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(He, "cyan"))))
+   time.sleep(0.3)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
+   time.sleep(0.3)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored('', "cyan"))))
+   time.sleep(0.3)

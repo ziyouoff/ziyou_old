@@ -2,6 +2,7 @@ import os
 import pickle
 import baners
 import main
+import webbrowser
 
 try:
     from pystyle import Center
@@ -92,7 +93,10 @@ def download_db(URL, NAME):
 
     gdown.download(URL, output_file, quiet=False, fuzzy=True)
     
-    
+def del_db(NAME):
+    osname = os.name
+    if osname == 'nt': os.system('DEL src\\' + NAME)
+    elif osname == 'posix': os.system('rm -rf src/' + NAME)
 
 
 def uclear():
@@ -177,8 +181,9 @@ def install():
     print(Center.XCenter(colored('│ В случае ошибок, неработы баз или ошибки при установки     │', "yellow")))
     print(Center.XCenter(colored('│ проверте наличие папки src и ее содержимого                │', "yellow")))
     print(Center.XCenter(colored('│ вот решения возможных проблем                              │', "yellow")))
-    print(Center.XCenter(colored('│ 1) При отсутсвии папки src просто создайте ее              │', "yellow")))
-    print(Center.XCenter(colored('│ 2) Если папка src существует то в ней должны находится     │', "yellow")))
+    print(Center.XCenter(colored('│ 1) Установите библиотеку GDown[L9]                         │', "yellow")))
+    print(Center.XCenter(colored('│ 2) При отсутсвии папки src просто создайте ее              │', "yellow")))
+    print(Center.XCenter(colored('│ 3) Если папка src существует то в ней должны находится     │', "yellow")))
     print(Center.XCenter(colored('│ базы в формате name.csv если расширение другое просто      │', "yellow")))
     print(Center.XCenter(colored('│ замените его на .csv  За помощью обращайтесь в бота        │', "yellow")))
     print(Center.XCenter(colored('│ либо лично ко мне                                          │', "yellow")))
@@ -195,7 +200,7 @@ def install():
     print(Center.XCenter(colored('├[L7]nmap           |     ├[B/D7]ТГ база 2 Глаз Бога  3.33 Мб|', "cyan")))
     print(Center.XCenter(colored('├[L8]scapy          |     ├[B/D8]ТГ база 3 Челябинск  1.30 Мб|', "blue")))
     print(Center.XCenter(colored('├[L9]GDown          |     ├[B/D9]Ru база ФИО-номер    45.9 Мб|', "cyan")))
-    print(Center.XCenter(colored('├[L10]PyStile       |     |                                  |', "blue")))
+    print(Center.XCenter(colored('├[L10]PyStile       |     ├[B/D10]Яндекс.еда          3.83 Гб|', "blue")))
     print(Center.XCenter(colored('|                   |  w  |                                  |', "cyan")))
     print(Center.XCenter(colored('├[La]INSTALL ALL    |  a  |[Ba]INSTALL ALL            11.7 Гб|', "blue")))
     print(Center.XCenter(colored('├[b]Вернутся        |  r  |[b]Вернутся                       |', "cyan")))
@@ -435,6 +440,100 @@ def install():
         print(colored('База не установлена', "red"))
         install()
 
+    try:
+        if install_input == 'B10': 
+            download_db('https://drive.google.com/file/d/1_M1IqS4OeHJAAB1GcQrT25cY49mr2vFW/view?usp=sharing', 'YaEda_1.csv') 
+            download_db('https://drive.google.com/file/d/1xvbA5X-tJzQ5RGeqChOJuo1TKwD1YKVB/view?usp=sharing', 'YaEda_2.csv')
+            download_db('https://drive.google.com/file/d/1-xPkLKYRKDI1pkUkukEoFU29mgjSVuri/view?usp=sharing', 'YaEda_3.csv')
+            download_db('https://drive.google.com/file/d/1CAKT4VngYQpKifXM8kRqNsQ401RWszWC/view?usp=sharing', 'YaEda_4.csv')
+            download_db('https://drive.google.com/file/d/1IBWaz4lND3FAYLRNiCMQjGi5NGuSGi9b/view?usp=sharing', 'YaEda_5.csv')
+            #5
+            download_db('https://drive.google.com/file/d/125yAu32QulgO31Paz2LOzO_BdFxZ8IYy/view?usp=sharing', 'YaEda_6.csv')
+            download_db('https://drive.google.com/file/d/1XDlslRSNhRJbQSJdOGulfpOCD_I31O1V/view?usp=sharing', 'YaEda_7.csv')
+            download_db('https://drive.google.com/file/d/1X244yUx7rDTSKhLI6WJp1pRRHHKMe7hS/view?usp=sharing', 'YaEda_8.csv')
+            download_db('https://drive.google.com/file/d/13q-9lNNPvxLotwOHUlkpSOApROgaDq2e/view?usp=sharing', 'YaEda_9.csv')
+            download_db('https://drive.google.com/file/d/15LVf5H77KecrzPQ7SY3B6FfAX0Go82kr/view?usp=sharing', 'YaEda_10.csv')
+            #10
+            download_db('https://drive.google.com/file/d/1OETFFZC8qO4zsXGJIez835He4Hporlgb/view?usp=sharing', 'YaEda_11.csv')
+            download_db('https://drive.google.com/file/d/19POMnOYWfNGYbaeZDBV0kWxxZUq1Ujm_/view?usp=sharing', 'YaEda_12.csv')
+            download_db('https://drive.google.com/file/d/1pkt-NupEuBYSYSxvDcUgt9QDdjgxIS_o/view?usp=sharing', 'YaEda_13.csv')
+            download_db('https://drive.google.com/file/d/10BNhBbHdtIKE_iX4aCzHVmhHzESr-u01/view?usp=sharing', 'YaEda_14.csv')
+            download_db('https://drive.google.com/file/d/1eKdjTEJNz6p1pglj1XVD1N_20rdFbZ48/view?usp=sharing', 'YaEda_15.csv')
+            #15
+            download_db('https://drive.google.com/file/d/1aOnhedikZMqtzwyReZ4Ho-1M3OyXwP1r/view?usp=sharing', 'YaEda_16.csv')
+            download_db('https://drive.google.com/file/d/1AgvfZYyjlJtlubbBYMMNGlyTfMMvHuL4/view?usp=sharing', 'YaEda_17.csv')
+            download_db('https://drive.google.com/file/d/1DmiakC-vOUxuE7lFe5QMNnyp0qM-MTwU/view?usp=sharing', 'YaEda_18.csv')
+            download_db('https://drive.google.com/file/d/1v-h2uL4ZCixG0G1wR_Q0HOwudyvkTOOd/view?usp=sharing', 'YaEda_19.csv')
+            download_db('https://drive.google.com/file/d/1qqFLTKZOnWJJTZrm5qKfsc0f3jxAZ_P5/view?usp=sharing', 'YaEda_20.csv')
+            #20
+            download_db('https://drive.google.com/file/d/1GJluxCkiAPul6Q_qmEMDnaTpl2jNjkSx/view?usp=sharing', 'YaEda_21.csv')
+            download_db('https://drive.google.com/file/d/1hiPRfqKzhZQWiW3cq1lN6fXiE01qbX7y/view?usp=sharing', 'YaEda_22.csv')
+            download_db('https://drive.google.com/file/d/1N0jFGbSPYzYIaDo0_LcKtzlB9N5IZiXb/view?usp=sharing', 'YaEda_23.csv')
+            download_db('https://drive.google.com/file/d/1i1xjR54LmyfAP-oqdvb6Zn8TKuFNUu1C/view?usp=sharing', 'YaEda_24.csv')
+            download_db('https://drive.google.com/file/d/1i1xjR54LmyfAP-oqdvb6Zn8TKuFNUu1C/view?usp=sharing', 'YaEda_25.csv')
+            #25
+            download_db('https://drive.google.com/file/d/1PB4FXHlyZ8UOqXx87KL3xZigdAol93ic/view?usp=sharing', 'YaEda_26.csv')
+            download_db('https://drive.google.com/file/d/1SmOm2pTXOBSiF0Ie-2j3eXc3hUrmw2It/view?usp=sharing', 'YaEda_27.csv')
+            download_db('https://drive.google.com/file/d/1oyvhVP1ONnj9KM8_fqTzaIX1qxDcBAEG/view?usp=sharing', 'YaEda_28.csv')
+            download_db('https://drive.google.com/file/d/1a6IcKq_p29ym6KwBc034wsrfOj9tkGFr/view?usp=sharing', 'YaEda_29.csv')
+            download_db('https://drive.google.com/file/d/1VD1Mp-kTDBCNbcYhsYPKcVq4aSn9asvC/view?usp=sharing', 'YaEda_30.csv')
+            #30
+            download_db('https://drive.google.com/file/d/1xQLymeyTjiG08Z5cOjqMn0F3kETgVCRY/view?usp=sharing', 'YaEda_31.csv')
+            download_db('https://drive.google.com/file/d/13SfrzrFQ2xt-ADDOMkepqeVej2DiGZbn/view?usp=sharing', 'YaEda_32.csv')
+            download_db('https://drive.google.com/file/d/1E6ORbSvt5V4bRuDTXXrDTnnFk9XdAdao/view?usp=sharing', 'YaEda_33.csv')
+            download_db('https://drive.google.com/file/d/12u3E_dwPYmsir5k_b8TztdgUq523rP5T/view?usp=sharing', 'YaEda_34.csv')
+            download_db('https://drive.google.com/file/d/1TG6vdgeqXZTi-6G84KXgAqS4ahSYWrRj/view?usp=sharing', 'YaEda_35.csv')
+            #35
+            download_db('https://drive.google.com/file/d/10wZQqvw51qJhkyRd9kgMNNI_4m8XeH35/view?usp=sharing', 'YaEda_36.csv')
+            download_db('https://drive.google.com/file/d/1W7-TFdOHfsUlO9hMc3vrwLxqcDD3qMNC/view?usp=sharing', 'YaEda_37.csv')
+            download_db('https://drive.google.com/file/d/1xMdM9rB-XzgRJIJrQ82KvehuTkGTqut_/view?usp=sharing', 'YaEda_38.csv')
+            download_db('https://drive.google.com/file/d/13yY-dOi2HZQfMHH-fdBBf4kLtmChbaUh/view?usp=sharing', 'YaEda_39.csv')
+            download_db('https://drive.google.com/file/d/1zkH1ZYjV3aF7rFAih8p2bH52ojn3X3oy/view?usp=sharing', 'YaEda_40.csv')
+            #40
+            download_db('https://drive.google.com/file/d/10lEf2d70B77z9Y8JXHxb2IHXM3j7qpQo/view?usp=sharing', 'YaEda_41.csv')
+            download_db('https://drive.google.com/file/d/1JuuzCodOyeofQLEkEB1uaimNzQbtzw36/view?usp=sharing', 'YaEda_42.csv')
+            download_db('https://drive.google.com/file/d/1SE_8NQsALWWE-ycUxjkgP_Ktmg7qrJ0q/view?usp=sharing', 'YaEda_43.csv')
+            download_db('https://drive.google.com/file/d/1DVjvPtQVWGHdsHeMkm2nIXJFAyIfO7no/view?usp=sharing', 'YaEda_44.csv')
+            download_db('https://drive.google.com/file/d/1a-U_d7HBB7I4bUMIgrnZRtKFzgzoLxBG/view?usp=sharing', 'YaEda_45.csv')
+            #45
+            download_db('https://drive.google.com/file/d/1nA6IsXSq5Pk4kRpoEwISiSFlWncemdci/view?usp=sharing', 'YaEda_46.csv')
+            download_db('https://drive.google.com/file/d/1q_sugn4LsBYrRgsptRMtkkB7b3RWsZH1/view?usp=sharing', 'YaEda_47.csv')
+            download_db('https://drive.google.com/file/d/1iHU-2LHkf0H_APadYRcVPbDbrn9TAPXg/view?usp=sharing', 'YaEda_48.csv')
+            download_db('https://drive.google.com/file/d/1cr60kZDqkszyIhMTr3Em2_UKKlkuY9Vv/view?usp=sharing', 'YaEda_49.csv')
+            download_db('https://drive.google.com/file/d/1QqZzhqeMmG-lc5SiWA1bBYeifxKQBVYd/view?usp=sharing', 'YaEda_ekaterinburg')
+            #50
+            download_db('https://drive.google.com/file/d/1-DIm2PsJE3nwQZCTxsBFSru_vr6chDSI/view?usp=sharing', 'YaEda_kazan')
+            download_db('https://drive.google.com/file/d/1LPl90B6PT54cpPfwQXB62oIkrocdzYSO/view?usp=sharing', 'YaEda_krasnodar')
+            download_db('https://drive.google.com/file/d/1nERB7f_OgJunFT5l2UN1h5EW2t264bVD/view?usp=sharing', 'YaEda_moscpw_1')
+            download_db('https://drive.google.com/file/d/1TMLD00s73ScWDgkFuprSHtaIdOiO5A-2/view?usp=sharing', 'YaEda_moscpw_2')
+            download_db('https://drive.google.com/file/d/1sbapo48CtLljXBsSPCX9ZmEISnyCZ7UQ/view?usp=sharing', 'YaEda_moscpw_3')
+            #55
+            download_db('https://drive.google.com/file/d/1j3ojwTP40azC1hvPdFq761kssc7Drw-E/view?usp=sharing', 'YaEda_nizniy_novgorod')
+            download_db('https://drive.google.com/file/d/1azp1y2bPpfpFcanhTyIo53oa5U0fLSs6/view?usp=sharing', 'YaEda_spb_3')
+            download_db('https://drive.google.com/file/d/1Bb6WqSrqXS73OY1HX5TY-Mn4oSRi5z_J/view?usp=sharing', 'YaEda_rostov_na_donu')
+            download_db('https://drive.google.com/file/d/1CsnL43DZ395mNfvq7duPWrKcR8HYGUTP/view?usp=sharing', 'YaEda_samara')
+            download_db('https://drive.google.com/file/d/10tc1CPdlcESyEl8W-tzH5sD5ciyd1lC5/view?usp=sharing', 'YaEda_ufa')
+            #60
+            download_db('https://drive.google.com/file/d/1ZvNDMmus8hbqrFXk_l9XKoIJihHlK_1X/view?usp=sharing', 'YaEda_voronej')
+            
+            uclear()
+            print(colored('База установлена', "green"))
+            install()
+    except:
+        uclear()
+        print(colored('База не установлена', "red"))
+        install()
+
+    if install_input == 'D1': del_db('zdravcity.ru_1_01_2023.csv')
+    elif install_input == 'D2': del_db('Tele2.ru (06.2022).csv')
+    elif install_input == 'D3': del_db('pasports_1.csv')
+    elif install_input == 'D4': del_db('gemotest.csv')
+    elif install_input == 'D5': del_db('DNSS_1_09_2022.csv')
+    elif install_input == 'D6': del_db('tg_base_1.txt')
+    elif install_input == 'D7': del_db('tg_base_2(YOG).csv')
+    elif install_input == 'D8': del_db('tg_base_3(chelabinsk).csv')
+    elif install_input == 'D9': del_db('ru_base.csv')
+
     
     
     
@@ -662,6 +761,37 @@ def main_menu():
     else: 
         uclear()
         main_menu()
-  
-
-main_menu()
+uclear()
+print('\n\n\n\n\n\n\n\n\n')
+print(Center.XCenter(colored('╔═════════════════════════════════════════════════════════════╗', 'yellow')))
+print(Center.XCenter(colored('║                         ИНФОРМАЦИЯ                          ║', 'yellow')))
+print(Center.XCenter(colored('╠═════════════════════════════════════════════════════════════╣', 'yellow')))
+print(Center.XCenter(colored('║Имея данный софт вы обязаны соблюдать следующие правила      ║', 'yellow')))
+print(Center.XCenter(colored('║                                                             ║', 'yellow')))
+print(Center.XCenter(colored('║1)Принимаете ответственность за все свои действия на себя.   ║', 'yellow')))
+print(Center.XCenter(colored('║2)Обязуетесь в случае публикованиях программы на различных   ║', 'yellow')))
+print(Center.XCenter(colored('║информационных информационных ресурсов указывать тгк автора  ║', 'yellow')))
+print(Center.XCenter(colored('║https://t.me/ziyou_off   либо  https://t.me/+To5Lgt_Fx70zZDMy║', 'yellow')))
+print(Center.XCenter(colored('║3)Не выодовать себя за автора программы                      ║', 'yellow')))
+print(Center.XCenter(colored('║4)Так же категорически запрещается продавть данную программу ║', 'yellow')))
+print(Center.XCenter(colored('╚═════════════════════════════════════════════════════════════╝', 'yellow')))
+print('\n\n\n')
+print(Center.XCenter(colored('╔═══════════════════════════════════════════════════╗', 'red')))
+print(Center.XCenter(colored('║Ведите [L] Чтобы открыть официльный канал c паролем║', 'red')))
+print(Center.XCenter(colored('╚═══════════════════════════════════════════════════╝', 'red')))                             
+print('\n\n\n')                            
+in_pw = input(Center.XCenter(colored('[@]ВВЕДИТЕ ПАРОЛЬ: ', 'red')))
+if in_pw == 'pepe776':
+    baners.print_hello()
+    uclear()
+    main_menu()
+elif in_pw == 'L':
+    webbrowser.open("https://t.me/+To5Lgt_Fx70zZDMy")
+elif in_pw == 'E':
+    uclear()
+    exit
+else:
+    uclear()
+    print(Center.XCenter(Center.YCenter(colored('[!]НЕВЕРНЫЙ ПАРОЛЬ!!!', 'red'))))
+    exit
+    

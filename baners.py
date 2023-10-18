@@ -1,4 +1,19 @@
-from termcolor import colored
+import os
+
+try:
+  from termcolor import colored
+except:
+   os.system('pip install termcolor')
+   from termcolor import colored
+
+try:
+    from pystyle import Center
+    from pystyle import Add
+except:
+    os.system('pip install pystyle')
+    from pystyle import Center
+    from pystyle import Add
+
 import random
 
 def soft_info():
@@ -14,6 +29,84 @@ _/____/___(___/_(___ _____/____/___(___/_(___ _
              /                        /        
          (_ /                     (_ /         
 '''
+
+setings_big = '''
+          _____                    _____                _____                    _____                    _____                    _____                    _____          
+         /\    \                  /\    \              /\    \                  /\    \                  /\    \                  /\    \                  /\    \         
+        /::\    \                /::\    \            /::\    \                /::\    \                /::\____\                /::\    \                /::\    \        
+       /::::\    \              /::::\    \           \:::\    \               \:::\    \              /::::|   |               /::::\    \              /::::\    \       
+      /::::::\    \            /::::::\    \           \:::\    \               \:::\    \            /:::::|   |              /::::::\    \            /::::::\    \      
+     /:::/\:::\    \          /:::/\:::\    \           \:::\    \               \:::\    \          /::::::|   |             /:::/\:::\    \          /:::/\:::\    \     
+    /:::/__\:::\    \        /:::/__\:::\    \           \:::\    \               \:::\    \        /:::/|::|   |            /:::/  \:::\    \        /:::/__\:::\    \    
+    \:::\   \:::\    \      /::::\   \:::\    \          /::::\    \              /::::\    \      /:::/ |::|   |           /:::/    \:::\    \       \:::\   \:::\    \   
+  ___\:::\   \:::\    \    /::::::\   \:::\    \        /::::::\    \    ____    /::::::\    \    /:::/  |::|   | _____    /:::/    / \:::\    \    ___\:::\   \:::\    \  
+ /\   \:::\   \:::\    \  /:::/\:::\   \:::\    \      /:::/\:::\    \  /\   \  /:::/\:::\    \  /:::/   |::|   |/\    \  /:::/    /   \:::\ ___\  /\   \:::\   \:::\    \ 
+/::\   \:::\   \:::\____\/:::/__\:::\   \:::\____\    /:::/  \:::\____\/::\   \/:::/  \:::\____\/:: /    |::|   /::\____\/:::/____/  ___\:::|    |/::\   \:::\   \:::\____\ 
+\:::\   \:::\   \::/    /\:::\   \:::\   \::/    /   /:::/    \::/    /\:::\  /:::/    \::/    /\::/    /|::|  /:::/    /\:::\    \ /\  /:::|____|\:::\   \:::\   \::/    /
+ \:::\   \:::\   \/____/  \:::\   \:::\   \/____/   /:::/    / \/____/  \:::\/:::/    / \/____/  \/____/ |::| /:::/    /  \:::\    /::\ \::/    /  \:::\   \:::\   \/____/ 
+  \:::\   \:::\    \       \:::\   \:::\    \      /:::/    /            \::::::/    /                   |::|/:::/    /    \:::\   \:::\ \/____/    \:::\   \:::\    \     
+   \:::\   \:::\____\       \:::\   \:::\____\    /:::/    /              \::::/____/                    |::::::/    /      \:::\   \:::\____\       \:::\   \:::\____\    
+    \:::\  /:::/    /        \:::\   \::/    /    \::/    /                \:::\    \                    |:::::/    /        \:::\  /:::/    /        \:::\  /:::/    /    
+     \:::\/:::/    /          \:::\   \/____/      \/____/                  \:::\    \                   |::::/    /          \:::\/:::/    /          \:::\/:::/    /     
+      \::::::/    /            \:::\    \                                    \:::\    \                  /:::/    /            \::::::/    /            \::::::/    /      
+       \::::/    /              \:::\____\                                    \:::\____\                /:::/    /              \::::/    /              \::::/    /       
+        \::/    /                \::/    /                                     \::/    /                \::/    /                \::/____/                \::/    /        
+         \/____/                  \/____/                                       \/____/                  \/____/                                           \/____/         
+                                                                                                                                                                           
+'''
+
+setings_smol = '''
+███████╗███████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
+██╔════╝██╔════╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
+███████╗█████╗     ██║   ██║██╔██╗ ██║██║  ███╗███████╗
+╚════██║██╔══╝     ██║   ██║██║╚██╗██║██║   ██║╚════██║
+███████║███████╗   ██║   ██║██║ ╚████║╚██████╔╝███████║
+╚══════╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
+                                                       
+'''
+
+H = '''
+██╗  ██╗
+██║  ██║
+███████║
+██╔══██║
+██║  ██║
+╚═╝  ╚═╝      
+'''
+
+He = '''
+██╗  ██╗███████╗
+██║  ██║██╔════╝
+███████║█████╗  
+██╔══██║██╔══╝  
+██║  ██║███████╗
+╚═╝  ╚═╝╚══════╝
+'''
+
+hel = '''
+██╗  ██╗███████╗██╗     
+██║  ██║██╔════╝██║     
+███████║█████╗  ██║     
+██╔══██║██╔══╝  ██║     
+██║  ██║███████╗███████╗
+╚═╝  ╚═╝╚══════╝╚══════╝
+'''
+hell = '''
+██╗  ██╗███████╗██╗     ██╗     
+██║  ██║██╔════╝██║     ██║     
+███████║█████╗  ██║     ██║     
+██╔══██║██╔══╝  ██║     ██║     
+██║  ██║███████╗███████╗███████╗
+╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+'''
+hello = '''
+██╗  ██╗███████╗██╗     ██╗      ██████╗ 
+██║  ██║██╔════╝██║     ██║     ██╔═══██╗
+███████║█████╗  ██║     ██║     ██║   ██║
+██╔══██║██╔══╝  ██║     ██║     ██║   ██║
+██║  ██║███████╗███████╗███████╗╚██████╔╝
+╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝ 
+                                         '''
 
 telegram_logo = f'''
 @@@@@@@@@@@@@@@@@@%%**+=-------------++*%%@@@@@@@@@@@@@@@@@@
@@ -134,36 +227,34 @@ baner_3 = '''
 '''
 
 baner_4 = f'''
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@%##****++++++++**##%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@%%#**+=-:..:=+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@%#**++========-:   -@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@%*++=====+***####%#*+=-:.   @@@%#%@@@@@@@@@@@@@@@@@@@@@
-@@%#*%@@@@@@@@@@@@#*=:..:--=++**:.%@@@#+++#@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@%*-::-+#%@@@@@@@@@@*   ..:-=--:-*@@@@@@@@@@@@@@
-@@@@@@@@@@*=-=*%@@@@@@@@@@@@@@*. -+####+=:  . .+@@@@@@@@@@@@
-@@@@@@@@*+#@@@@@@@@@@@@@@@@@@*  %@@@@@@@@@@%*-  :%@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@- =@@@@@@@@@@@@@@*- .+#@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@- .@@@@@@@@@@@@@@@@@*=%@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%. :#@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+  .-++****##%@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*===---:.    .-+#@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#+. :-.=%@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#.:%+.*@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-.%%.#@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-:@%=@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.%@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+*@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#*@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                          .-  :                             
+                           :*.:*.                           
+                    .+-.:=. .#+-%=                          
+                 =%##%%%%%%%*+%%*#%-                        
+              =#%%%%%%%%%%%%%%%%%%%%%=                      
+             -*%%%%#=-:...:-+#%%%%%%%%%+                    
+            -#%%%%:            -#%%%%%%%%-                  
+            +%%%@:               :#%%%%  %=                 
+           :-%%%@.                 +%%%%%%%+                
+            :@%%%*                   -*%%%%*.               
+            ::*%%%#:                    =%%%%+.             
+              .%*%%%*-                    +%%%%:            
+                  =#%%%*-                  %%#:             
+                     -+#%%#+-.             -.               
+                         :=*%%#+:                           
+                             .=*%#-                         
+                                 -##.                       
+                                   -%.                      
+                                    :*                      
+                                     =                      
+                                                            
+                                                            
+
 
 '''
 
@@ -203,7 +294,7 @@ ziyou_1 = '''
 ░░░░░░░░░░░░░░░░░░░/ /| | | | |/ _ \| | | |░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░/ /_| | |_| | (_) | |_| |░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░/____|_|\__, |\___/ \__,_|░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░░░░░░░░░░░░|___/░Version 1.0░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░|___/░Version 1.4.3░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                     ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
                     ▄Telegtam: @ziyouoff▄
@@ -211,6 +302,9 @@ ziyou_1 = '''
 '''
 
 ziyou_2 = '''
+
+
+
           _____                    _____                _____                   _______                   _____          
          /\    \                  /\    \              |\    \                 /::\    \                 /\    \         
         /::\    \                /::\    \             |:\____\               /::::\    \               /::\____\        
@@ -232,7 +326,7 @@ _______________\:::\____\/::\   \/:::/  \:::\____\    /::::::::::\____\|:::|____
        \:::\____\               \:::\____\                                     \::/____/               \::::/    /       
         \::/    /                \::/    /                                      ~~                      \::/____/        
          \/____/                  \/____/                                                                ~~              
-          telegram: @ziyouoff                                                                        version: 1.0                             
+          telegram: @ziyouoff                                                                        version: 1.4.3                             
 '''
 
 ziyou_3 = '''
@@ -241,7 +335,7 @@ ziyou_3 = '''
 \/_/  /__  \ \ \  \ \____ \  \ \ \/\ \  \ \ \_\ \  
   /\_____\  \ \_\  \/\_____\  \ \_____\  \ \_____\ 
   \/_____/   \/_/   \/_____/   \/_____/   \/_____/ 
-   telegram: @ziyouoff               version: 1.0
+   telegram: @ziyouoff             version: 1.4.3
                                                    
 '''
 
@@ -252,7 +346,7 @@ ziyou_4 = '''
  ███╔╝  ██║  ╚██╔╝  ██║   ██║██║   ██║
 ███████╗██║   ██║   ╚██████╔╝╚██████╔╝
 ╚══════╝╚═╝   ╚═╝    ╚═════╝  ╚═════╝ 
-telegram: @ziyouoff      version: 1.0                                      
+telegram: @ziyouoff   version: 1.4.3                                     
 '''
 
 ziyou_5 = '''
@@ -266,7 +360,7 @@ ziyou_5 = '''
 ░ ░ ░ ░ ░ ▒ ░ ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░ 
   ░ ░     ░   ░ ░         ░ ░     ░     
 ░             ░ ░                  
-telegram: @ziyouoff      version: 1.0        
+telegram: @ziyouoff      version: 1.4.3      
 '''
 
 ziyou_6 = '''
@@ -278,7 +372,7 @@ ziyou_6 = '''
 ▄███▀       ███  ███   ███ ███    ███ ███    ███ 
 ███▄     ▄█ ███  ███   ███ ███    ███ ███    ███ 
  ▀████████▀ █▀    ▀█████▀   ▀██████▀  ████████▀  
-  telegram: @ziyouoff             version: 1.0    
+  telegram: @ziyouoff           version: 1.4.3   
                                                  
 '''
 
@@ -289,27 +383,97 @@ _      ___      ___   __   ____     ___    ___    _
   /  /     |  |     \    /   (       ) |  |   |  | 
  /  /__   _|  |_     )  /     \     /  |   \_/   | 
 (      )_(      )___/  (_______)   (____\       /__
- telegram: @ziyouoff                  version: 1.0   
+ telegram: @ziyouoff                version: 1.4.3 
 '''
 
 def print_start():
+    try:
+      import pickle
+      with open('data.pkl', 'rb') as file:
+          data = pickle.load(file)      
+    except:
+       import main
+       main.setings()
+    
     r_baner = random.randint(1, 5)
     r_ziyou = random.randint(1, 7)
 
-    if r_baner == 1: print(colored(baner_1.center(len(baner_1) + 150), "blue"))
-    elif r_baner == 2: print(colored(baner_2.center(len(baner_2) + 150), "white"))
-    elif r_baner == 3: print(colored(baner_3.center(len(baner_3) + 150), "white"))
-    elif r_baner == 4: print(colored(baner_4.center(len(baner_4) + 150), "blue"))
-    elif r_baner == 5: print(colored(baner_5.center(len(baner_5) + 150), "white"))
+    if data['devise'] == 'M':
+      if r_baner == 1: print(Center.XCenter(colored(baner_1, "blue")))
+      elif r_baner == 2: print(Center.XCenter(colored(baner_2, "white")))
+      elif r_baner == 3: print(Center.XCenter(colored(baner_3, "white")))
+      elif r_baner == 4: print(Center.XCenter(colored(baner_4, "blue")))
+      elif r_baner == 5: print(Center.XCenter(colored(baner_5, "white")))
+
+
+      if r_ziyou == 1: print(Center.XCenter(colored(ziyou_1, "yellow")))
+      elif r_ziyou == 2: print(Center.XCenter(colored(ziyou_2, "yellow")))
+      elif r_ziyou == 3: print(Center.XCenter(colored(ziyou_3, "cyan")))
+      elif r_ziyou == 4: print(Center.XCenter(colored(ziyou_4, "red")))
+      elif r_ziyou == 5: print(Center.XCenter(colored(ziyou_5, "green")))
+      elif r_ziyou == 6: print(Center.XCenter(colored(ziyou_6, "white")))
+      elif r_ziyou == 7: print(Center.XCenter(colored(ziyou_7, "white")))
     
+    elif data['devise'] == 'P':
+       print(Center.XCenter(Add.Add(colored(baner_4, "blue"), colored(ziyou_2, "blue"))))
 
-    if r_ziyou == 1: print(colored(ziyou_1.center(len(ziyou_1) + 150), "yellow"))
-    elif r_ziyou == 2: print(colored(ziyou_2.center(len(ziyou_2) + 150), "yellow"))
-    elif r_ziyou == 3: print(colored(ziyou_3.center(len(ziyou_3) + 150), "cyan"))
-    elif r_ziyou == 4: print(colored(ziyou_4.center(len(ziyou_4) + 150), "red"))
-    elif r_ziyou == 5: print(colored(ziyou_5.center(len(ziyou_5) + 150), "green"))
-    elif r_ziyou == 6: print(colored(ziyou_6.center(len(ziyou_6) + 150), "white"))
-    elif r_ziyou == 7: print(colored(ziyou_7.center(len(ziyou_7) + 150), "white"))
+def print_telegram_logo(): print(Center.XCenter(colored(telegram_logo, "blue")))
+def print_bye_bye(): print(Center.XCenter(Bye_Bye))
 
-def print_telegram_logo(): print(colored(telegram_logo, "blue"))
-def print_bye_bye(): print(Bye_Bye)
+def print_ascll_setings():
+    try:
+      import pickle
+      with open('data.pkl', 'rb') as file:
+        data = pickle.load(file)  
+
+      if data['devise'] == 'M':
+        print(Center.XCenter(colored(setings_smol, 'yellow')))
+
+      elif data['devise'] == 'P':
+        print(Center.XCenter(colored(setings_big, 'yellow')))
+    except:
+       pass
+    
+def print_hello():
+   import main
+   import time
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
+   time.sleep(0.6)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(He, "cyan"))))
+   time.sleep(0.6)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hel, "cyan"))))
+   time.sleep(0.6)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hell, "cyan"))))
+   time.sleep(0.6)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hello, "cyan"))))
+   time.sleep(1)
+
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hell, "cyan"))))
+   time.sleep(0.3)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(hel, "cyan"))))
+   time.sleep(0.3)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(He, "cyan"))))
+   time.sleep(0.3)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
+   time.sleep(0.3)
+
+   main.uclear()
+   print(Center.XCenter(Center.YCenter(colored('', "cyan"))))
+   time.sleep(0.3)

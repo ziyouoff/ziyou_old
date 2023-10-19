@@ -14,6 +14,16 @@ except:
     from pystyle import Center
     from pystyle import Add
 
+try:
+    from colorama import init, Fore
+    from colorama import Back
+    from colorama import Style
+except:
+    os.system('pip install colorama')
+    from colorama import init, Fore
+    from colorama import Back
+    from colorama import Style
+
 import random
 
 def soft_info():
@@ -53,6 +63,10 @@ setings_big = '''
         \::/    /                \::/    /                                     \::/    /                \::/    /                \::/____/                \::/    /        
          \/____/                  \/____/                                       \/____/                  \/____/                                           \/____/         
                                                                                                                                                                            
+'''
+
+pc_vers = '''
+
 '''
 
 setings_smol = '''

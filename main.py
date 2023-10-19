@@ -1,8 +1,19 @@
 import os 
+import sys
 import pickle
 import baners
 import main
 import webbrowser
+
+try:
+    from colorama import init, Fore
+    from colorama import Back
+    from colorama import Style
+except:
+    os.system('pip install colorama')
+    from colorama import init, Fore
+    from colorama import Back
+    from colorama import Style
 
 try:
     from pystyle import Center
@@ -167,12 +178,10 @@ def start_serch():
 
 def install():
     if os.path.exists("src/"):
-        print("Файл существует")
+        print(Center.XCenter(colored("[OK]src cоздан", "grey")))
     else:
         os.system('mkdir src')
             
-
-
     print(Center.XCenter(colored('┌────────────────────────────────────────────────────────────┐', "yellow")))
     print(Center.XCenter(colored('│                        Установщик                          │', "yellow")))
     print(Center.XCenter(colored('├────────────────────────────────────────────────────────────┤', "yellow")))
@@ -187,6 +196,7 @@ def install():
     print(Center.XCenter(colored('│ базы в формате name.csv если расширение другое просто      │', "yellow")))
     print(Center.XCenter(colored('│ замените его на .csv  За помощью обращайтесь в бота        │', "yellow")))
     print(Center.XCenter(colored('│ либо лично ко мне                                          │', "yellow")))
+    print(Center.XCenter(colored('│ Базы DNS и ZdravSity не подключены, можете пока не качать  │', "yellow")))
     print(Center.XCenter(colored('└────────────────────────────────────────────────────────────┘', "yellow")))
     print(Center.XCenter(colored('┌───────────────────┐     ┌──────────────────────────────────┐', "blue")))
     print(Center.XCenter(colored('│Установка библиотек│  L  │         Установка баз            │', "cyan")))
@@ -205,9 +215,9 @@ def install():
     print(Center.XCenter(colored('├[La]INSTALL ALL    |  a  |[Ba]INSTALL ALL            11.7 Гб|', "blue")))
     print(Center.XCenter(colored('├[b]Вернутся        |  r  |[b]Вернутся                       |', "cyan")))
     print(Center.XCenter(colored('└───────────────────┘     └──────────────────────────────────┘', "blue")))
-    print(Center.XCenter('Пссс... Базы DNS и ZdravSity не подключены, можете пока не качать'))
 
-    install_input = input(colored("""\n[+]> """, "red"))
+    install_input = input(Center.XCenter(colored("""\n[+]Select>""", 'red')))
+
 
     try: 
         if install_input == 'L1': 
@@ -535,13 +545,6 @@ def install():
     elif install_input == 'D9': del_db('ru_base.csv')
 
     
-    
-    
-    
-
-
-
-    
 
 def main_menu():
     baners.print_start()
@@ -572,7 +575,7 @@ def main_menu():
     print('')
 	
     #input_text = Center.XCenter()"""\n[+]> """, "red"
-    select = input(Center.XCenter(colored("""\n[+]> """, "red")))
+    select = input(Center.XCenter(colored("""\n[+]Select> """, "red")))
 
     
 #################################################
@@ -582,9 +585,14 @@ def main_menu():
         uclear()
         baners.print_start()
         main()
-        
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+                    
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -596,10 +604,16 @@ def main_menu():
 #################################################
 
     elif select == '2':
-        from port_scan import main
-        main()
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        import port_scan
+        port_scan.main()
+
+        print(Center.XCenter(colored('   ╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('   ║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('   ║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('   ╚══════════════════════╝', "cyan")))
+
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -615,9 +629,14 @@ def main_menu():
         uclear()
         baners.print_start()
         start_bomber()
+            
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
 
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -633,9 +652,14 @@ def main_menu():
         uclear()
         baners.print_start()
         FlipperNull()
+            
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
 
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -648,9 +672,14 @@ def main_menu():
 
     elif select == '5':
         print(colored('[!]В разарботке', "red"))
+            
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
 
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -664,9 +693,14 @@ def main_menu():
     elif select == '6':
         uclear()
         start_serch()
+            
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
 
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -680,9 +714,14 @@ def main_menu():
     elif select == '7':
         uclear()
         start_serch()
+            
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
 
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -697,9 +736,14 @@ def main_menu():
         import ddos
         uclear()
         ddos.start_DDoS()
+            
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
 
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -712,9 +756,14 @@ def main_menu():
 
     elif select == '9':
         print(colored('[!]В разарботке', "red"))
+            
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
 
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -729,9 +778,14 @@ def main_menu():
         with open('data.pkl', 'rb') as file:
             data = pickle.load(file)  
             print(data['devise'])
-         
-        print(colored('[1] - Вернутся в меню\n[2] - Выход', "cyan"))
-        mrnu_or_exit = input(colored("""\n[+]>""", 'cyan'))
+
+        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
+        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
+        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
+        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
         if mrnu_or_exit == '1':
             baners.print_start()
             main_menu()
@@ -755,7 +809,7 @@ def main_menu():
 
     elif select == 'e':
         baners.print_bye_bye()
-        exit
+        sys.exit()
 
     
     else: 
@@ -789,9 +843,11 @@ elif in_pw == 'L':
     webbrowser.open("https://t.me/+To5Lgt_Fx70zZDMy")
 elif in_pw == 'E':
     uclear()
-    exit
+    sys.exit()
 else:
     uclear()
-    print(Center.XCenter(Center.YCenter(colored('[!]НЕВЕРНЫЙ ПАРОЛЬ!!!', 'red'))))
-    exit
+    print(Center.XCenter(Center.YCenter(colored('╔═════════════════════╗', 'red'))))
+    print(Center.XCenter(colored('║[!]НЕВЕРНЫЙ ПАРОЛЬ!!!║', 'red')))
+    print(Center.XCenter(colored('╚═════════════════════╝', 'red')))
+    sys.exit()
     

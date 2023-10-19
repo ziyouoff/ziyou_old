@@ -1,5 +1,18 @@
 from termcolor import colored
 import time
+import os
+try:
+    from rich.console import Console
+    from rich.table import Table
+    from rich.tree import Tree
+    from rich import print as rprint
+except:
+    os.system('pip install Rich')
+    from rich.console import Console
+    from rich.table import Table
+    from rich.tree import Tree
+    from rich import print as rprint
+
 
 def tele2_1_06_22(phone):
     try:
@@ -8,14 +21,13 @@ def tele2_1_06_22(phone):
                 #print(line)
                 data = line.strip().split(';')  
                 if len(data) >= 3 and data[2] == phone:
-                    print(colored('┌──────────────────────────────────────────────────────', "green"))
-                    print(colored('│Найдено в базе Tele2(06.2022)', "green"))
-                    print(colored('├──────────────────────────────────────────────────────', "green"))
-                    print(colored('├Почта: ' + data[0].strip(), "green"))
-                    print(colored('├ФИО: ' + data[1].strip(), "green"))
-                    print(colored('├Номер Телефона: ' + data[2].strip(), "green"))
-                    print(colored('└──────────────────────────────────────────────────────', "green"))
-
+                    print('\n')
+                    tree_tele_2 = Tree('Tele2 [06.2022]', style='red')
+                    tree_tele_2.add('Почта', style='cyan').add(str(data[0].strip()), style='yellow')
+                    tree_tele_2.add('ФИО', style='cyan').add(str(data[1].strip()), style='yellow')
+                    tree_tele_2.add('Номер телефона', style='cyan').add(str(data[2].strip()), style='yellow')
+                    rprint(tree_tele_2)
+                    
         print(colored(f"Номер телефона в 1-ой базе не найден :( ", "red"))
     except:
         print(colored('База не найдена или произошла иная ошибка, продожаю поиск в других базах', "red"))
@@ -73,8 +85,8 @@ def gemotest (phone):
                     print(colored('│Найдено в базе gemotest', "green"))
                     print(colored('├──────────────────────────────────────────────────────', "green"))
                     print(colored('├id: ' + data[0].strip(), "green"))
-                    print(colored('├last name: ' + data[1].strip(), "green"))
-                    print(colored('├first name: ' + data[2].strip(), "green"))
+                    print(colored('├last_name: ' + data[1].strip(), "green"))
+                    print(colored('├first_name: ' + data[2].strip(), "green"))
                     print(colored('├middle_name: ' + data[3].strip(), "green"))
                     print(colored('├birth_date: ' + data[4].strip(), "green"))
                     print(colored('├sex: ' + data[5].strip(), "green"))
@@ -100,6 +112,40 @@ def gemotest (phone):
                     print(colored('├actual_address: ' + data[25].strip(), "green"))
                     print(colored('├birthissued_by: ' + data[26].strip(), "green"))
                     print(colored('└──────────────────────────────────────────────────────', "green"))
+
+                    print('\n')
+                    tree_gemotest = Tree('Gemotest', style='red')
+
+                    tree_gemotest.add('id', style='cyan').add(str(data[0].strip()), style='yellow')
+                    tree_gemotest.add('last_name', style='cyan').add(str(data[1].strip()), style='yellow')
+                    tree_gemotest.add('first_name', style='cyan').add(str(data[2].strip()), style='yellow')
+                    tree_gemotest.add('middle_name', style='cyan').add(str(data[3].strip()), style='yellow')
+                    tree_gemotest.add('birth_date', style='cyan').add(str(data[4].strip()), style='yellow')
+                    tree_gemotest.add('sex', style='cyan').add(str(data[5].strip()), style='yellow')
+                    tree_gemotest.add('mobile_phone', style='cyan').add(str(data[6].strip()), style='yellow')
+                    tree_gemotest.add('home_phone', style='cyan').add(str(data[7].strip()), style='yellow')
+                    tree_gemotest.add('mail', style='cyan').add(str(data[8].strip()), style='yellow')
+                    tree_gemotest.add('send_notify_on_phone', style='cyan').add(str(data[9].strip()), style='yellow')
+                    tree_gemotest.add('address_city', style='cyan').add(str(data[10].strip()), style='yellow')
+                    tree_gemotest.add('address_street', style='cyan').add(str(data[11].strip()), style='yellow')
+                    tree_gemotest.add('insurance_number', style='cyan').add(str(data[12].strip()), style='yellow')
+                    tree_gemotest.add('insurance_company', style='cyan').add(str(data[13].strip()), style='yellow')
+                    tree_gemotest.add('birth_certificate', style='cyan').add(str(data[14].strip()), style='yellow')
+                    tree_gemotest.add('passport_number', style='cyan').add(str(data[15].strip()), style='yellow')
+                    tree_gemotest.add('passport_issued_by', style='cyan').add(str(data[16].strip()), style='yellow')
+                    tree_gemotest.add('birthplace', style='cyan').add(str(data[17].strip()), style='yellow')
+                    tree_gemotest.add('parent_id', style='cyan').add(str(data[18].strip()), style='yellow')
+                    tree_gemotest.add('parent_id_confirmed_flag', style='cyan').add(str(data[19].strip()), style='yellow')
+                    tree_gemotest.add('created_at', style='cyan').add(str(data[20].strip()), style='yellow')
+                    tree_gemotest.add('updated_at', style='cyan').add(str(data[21].strip()), style='yellow')
+                    tree_gemotest.add('deleted_at', style='cyan').add(str(data[22].strip()), style='yellow')
+                    tree_gemotest.add('citizenship', style='cyan').add(str(data[23].strip()), style='yellow')
+                    tree_gemotest.add('actual_region', style='cyan').add(str(data[24].strip()), style='yellow')
+                    tree_gemotest.add('actual_address', style='cyan').add(str(data[25].strip()), style='yellow')
+                    tree_gemotest.add('birthissued_by', style='cyan').add(str(data[26].strip()), style='yellow')
+                    
+
+                    rprint(tree_gemotest)
 
         print(colored(f"Номер телефона в 4-oй базе не найден :( ", "red"))
     except:

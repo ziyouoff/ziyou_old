@@ -27,60 +27,80 @@ except:
     os.system('pip install termcolor')
     from termcolor import colored
 
+try:
+    from rich import print
+    from rich.layout import Layout
+except:
+    os.system('pip install rich')
+    from rich import print
+    from rich.layout import Layout
 
 ############################################################
 ############################################################
 ############################################################
-if os.path.exists('data.pkl'):
-    # Восстановление переменных
-    with open('data.pkl', 'rb') as file:
-        restored_data = pickle.load(file)
-    print(restored_data)
-    
-else:
-    # Сохранение переменных
-    data = {'devise': 'M'}
-    with open('data.pkl', 'wb') as file:
-        pickle.dump(data, file)
-    
 def setings():
+    global data
+
+    with open('save', 'rb') as file:
+        data = pickle.load(file)
+
     baners.print_ascll_setings()
 
-    with open('data.pkl', 'wb') as file:
-        pickle.dump(data, file)
-        devise = data['devise']
+    print(Center.XCenter(colored('╔═════════════════════════════════╗', "yellow")))
+    print(Center.XCenter(colored('║1) Устройство                 [' + data['devise'] +']║', "yellow")))
+    print(Center.XCenter(colored('║2) Вывод баз                  [' + data['base_out'] + ']║', "yellow")))
+    print(Center.XCenter(colored('║3) Приветственная анимация    [' + data['hello_anim'] + ']║', "yellow")))
+    print(Center.XCenter(colored('║                                 ║', "yellow")))
+    print(Center.XCenter(colored('║b) Вернутся                      ║', "yellow")))
+    print(Center.XCenter(colored('╚═════════════════════════════════╝', "yellow")))
 
-    print(Center.XCenter(colored('┌──────────────────────────────────┐', "yellow")))
-    print(Center.XCenter(colored('|            Настройки             |', "yellow")))
-    print(Center.XCenter(colored('├──────────────────────────────────┤', "yellow")))
-    print(Center.XCenter(colored('├[1] - Выбрать Устройство       [' + devise + ']│', "yellow"))) 
-    print(Center.XCenter(colored('│                                  │', "yellow"))) 
-    print(Center.XCenter(colored('├[b] - Назад                       │', "yellow"))) 
-    print(Center.XCenter(colored('└──────────────────────────────────┘', "yellow")))
+    select_setings = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
-    select = input(Center.XCenter(colored("""\n[+]select > """, "red")))
-
-    if select == '1':
-
-        print(Center.XCenter(colored('┌──────────────────────────────────┐', "yellow")))
-        print(Center.XCenter(colored('│"M" - Мобильный вид софта         │', "yellow")))
-        print(Center.XCenter(colored('│"P" - Вид софта софта для PC      │', "yellow")))
-        print(Center.XCenter(colored('└──────────────────────────────────┘', "yellow")))
-
-        select = input(Center.XCenter(colored("""\n[+]select > """, "red")))
-
-        if select == 'M':
-            data['devise'] = 'M'
-            with open('data.pkl', 'wb') as file:
-                pickle.dump(data, file)
-
-        elif select == 'P':
-            data['devise'] = 'P'
-            with open('data.pkl', 'wb') as file:
-                pickle.dump(data, file)
-
-    elif select == 'b':
+    if select_setings == 'b':
         main_menu()
+
+    elif select_setings == '1':
+        print(Center.XCenter(colored('╔════════════════════════╗', "yellow")))
+        print(Center.XCenter(colored('║ [P] - PC версия        ║', "yellow")))
+        print(Center.XCenter(colored('║ [M] - Мобильная версия ║', "yellow")))
+        print(Center.XCenter(colored('║                        ║', "yellow")))
+        print(Center.XCenter(colored('║ [b] - Вернуься         ║', "yellow")))
+        print(Center.XCenter(colored('╚════════════════════════╝', "yellow")))
+
+        select_devise = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+        data['devise'] = select_devise
+        with open("save","wb") as save:
+            pickle.dump(data,save)
+        setings()
+
+    elif select_setings == '2':
+        print(Center.XCenter(colored('╔══════════════════════════╗', "yellow")))
+        print(Center.XCenter(colored('║ [T] - Структура дерева   ║', "yellow")))
+        print(Center.XCenter(colored('║ [S] - Стандартная версия ║', "yellow")))
+        print(Center.XCenter(colored('║                          ║', "yellow")))
+        print(Center.XCenter(colored('║ [b] - Вернуься           ║', "yellow")))
+        print(Center.XCenter(colored('╚══════════════════════════╝', "yellow")))
+
+        select_base_out = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+        data['base_out'] = select_base_out
+        with open("save","wb") as save:
+            pickle.dump(data,save)
+        setings()
+
+    elif select_setings == '3':
+        print(Center.XCenter(colored('╔══════════════════════════╗', "yellow")))
+        print(Center.XCenter(colored('║ [1] - On                 ║', "yellow")))
+        print(Center.XCenter(colored('║ [0] - Off                ║', "yellow")))
+        print(Center.XCenter(colored('║                          ║', "yellow")))
+        print(Center.XCenter(colored('║ [b] - Вернуься           ║', "yellow")))
+        print(Center.XCenter(colored('╚══════════════════════════╝', "yellow")))
+
+        select_status_start_anim = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+        data['hello_anim'] = select_status_start_anim
+        with open("save","wb") as save:
+            pickle.dump(data,save)
+        setings()
+
 
      
 
@@ -121,7 +141,7 @@ def uclear():
 
 def start_serch_name():
     import serch_name
-    fio = input(colored("[+]Введите имя: ", "cyan"))
+    fio = input(Center.XCenter(colored("[+]Введите имя: ", "cyan")))
 
     serch_name.pasports_1(fio)
     serch_name.tele2_1_06_22(fio)
@@ -133,7 +153,7 @@ def start_serch_name():
 
 def start_serch_phone():
     import serch_phone
-    phone = input(colored("[+]Введите номер телефона для поиска(без +): ", "cyan"))
+    phone = input(Center.XCenter(colored("[+]Введите номер телефона для поиска(без +): ", "cyan")))
     
     serch_phone.tele2_1_06_22(phone)
     serch_phone.zdravcity_1_01_23(phone)
@@ -145,7 +165,7 @@ def start_serch_phone():
 def start_serch_telegram():
     import serch_telegram
     print(colored(baners.telegram_logo, "cyan"))
-    uid = input(colored("[+]Введите user_name пользователя: ", "cyan"))
+    uid = input(Center.XCenter(colored("[+]Введите user_name пользователя: ", "cyan")))
 
     serch_telegram.find_phone_by_uid_1(uid)
     serch_telegram.find_phone_by_uid_2(uid)
@@ -164,13 +184,14 @@ def start_serch():
     print(Center.XCenter(colored('├[b] - Вернутся                    │', "yellow")))
     print(Center.XCenter(colored('└──────────────────────────────────┘', "yellow")))
 
-    select_info_type = input(colored("""\n[+]>""", 'cyan'))
+    select_info_type = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+    import serch_phone
+    import serch_name
+    import serch_telegram
 
-    if select_info_type == '1': start_serch_phone()
-    elif select_info_type == '2': start_serch_name()
-    elif select_info_type == '3': start_serch_telegram()
-
-    elif select_info_type == 'b': main_menu()
+    if select_info_type == '1': serch_phone.start_serch()
+    elif select_info_type == '2': serch_name.start_serch()
+    elif select_info_type == '3': serch_telegram.start_serch()
 
 ############################################################
 ############################################################
@@ -815,6 +836,18 @@ def main_menu():
     else: 
         uclear()
         main_menu()
+
+osname = os.name
+if osname == 'nt':
+    os.system('DEL defolt_set.py')
+    os.system('DEL base_creater.py')
+    os.system('DEL data.pkl')
+elif osname == 'posix':
+    os.system('rm -rf defolt_set.py')
+    os.system('rm -rf base_creater.py')
+    os.system('rm -rf data.pkl')
+
+
 uclear()
 print('\n\n\n\n\n\n\n\n\n')
 print(Center.XCenter(colored('╔═════════════════════════════════════════════════════════════╗', 'yellow')))
@@ -836,14 +869,29 @@ print(Center.XCenter(colored('╚═══════════════�
 print('\n\n\n')                            
 in_pw = input(Center.XCenter(colored('[@]ВВЕДИТЕ ПАРОЛЬ: ', 'red')))
 if in_pw == 'pepe776':
+
+    try:
+        with open('save', 'rb') as file:
+            data = pickle.load(file)
+    except:
+        data = {'devise': 'M',
+                'base_out': 'T',
+                'hello_anim': '1'}
+        
+        with open("save","wb") as save:
+            pickle.dump(data,save)
+        
     baners.print_hello()
     uclear()
     main_menu()
+
 elif in_pw == 'L':
     webbrowser.open("https://t.me/+To5Lgt_Fx70zZDMy")
+
 elif in_pw == 'E':
     uclear()
     sys.exit()
+
 else:
     uclear()
     print(Center.XCenter(Center.YCenter(colored('╔═════════════════════╗', 'red'))))

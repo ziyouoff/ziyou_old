@@ -401,24 +401,16 @@ _      ___      ___   __   ____     ___    ___    _
 '''
 
 def print_start():
-    try:
-      import pickle
-      with open('data.pkl', 'rb') as file:
-          data = pickle.load(file)      
-    except:
-       import main
-       main.setings()
-    
-    r_baner = random.randint(1, 5)
-    r_ziyou = random.randint(1, 7)
+    import main
+    if main.data['devise'] == 'M':
+      r_baner = random.randint(1, 5)
+      r_ziyou = random.randint(1, 7)
 
-    if data['devise'] == 'M':
       if r_baner == 1: print(Center.XCenter(colored(baner_1, "blue")))
       elif r_baner == 2: print(Center.XCenter(colored(baner_2, "white")))
       elif r_baner == 3: print(Center.XCenter(colored(baner_3, "white")))
       elif r_baner == 4: print(Center.XCenter(colored(baner_4, "blue")))
       elif r_baner == 5: print(Center.XCenter(colored(baner_5, "white")))
-
 
       if r_ziyou == 1: print(Center.XCenter(colored(ziyou_1, "yellow")))
       elif r_ziyou == 2: print(Center.XCenter(colored(ziyou_2, "yellow")))
@@ -427,67 +419,64 @@ def print_start():
       elif r_ziyou == 5: print(Center.XCenter(colored(ziyou_5, "green")))
       elif r_ziyou == 6: print(Center.XCenter(colored(ziyou_6, "white")))
       elif r_ziyou == 7: print(Center.XCenter(colored(ziyou_7, "white")))
+    elif main.data['devise'] == 'P':
+       print(colored(Add.Add(baner_4, ziyou_2), "blue"))
     
-    elif data['devise'] == 'P':
-       print(Center.XCenter(Add.Add(colored(baner_4, "blue"), colored(ziyou_2, "blue"))))
 
 def print_telegram_logo(): print(Center.XCenter(colored(telegram_logo, "blue")))
 def print_bye_bye(): print(Center.XCenter(Bye_Bye))
-
 def print_ascll_setings():
-    try:
-      import pickle
-      with open('data.pkl', 'rb') as file:
-        data = pickle.load(file)  
-
-      if data['devise'] == 'M':
-        print(Center.XCenter(colored(setings_smol, 'yellow')))
-
-      elif data['devise'] == 'P':
-        print(Center.XCenter(colored(setings_big, 'yellow')))
-    except:
-       pass
+    import main
+    if main.data['devise'] == 'M':
+        print(Center.XCenter(colored(setings_smol, "yellow")))
+    elif main.data['devise'] == 'P':
+        print(Center.XCenter(colored(setings_big, "yellow")))
+        
+   
     
 def print_hello():
-   import main
-   import time
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
-   time.sleep(0.6)
+  import main
+  import time
+  if main.data['hello_anim'] == 1:
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
+    time.sleep(0.4)
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(He, "cyan"))))
-   time.sleep(0.6)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(He, "cyan"))))
+    time.sleep(0.4)
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(hel, "cyan"))))
-   time.sleep(0.6)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(hel, "cyan"))))
+    time.sleep(0.4)
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(hell, "cyan"))))
-   time.sleep(0.6)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(hell, "cyan"))))
+    time.sleep(0.4)
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(hello, "cyan"))))
-   time.sleep(1)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(hello, "cyan"))))
+    time.sleep(1)
 
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(hell, "cyan"))))
-   time.sleep(0.3)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(hell, "cyan"))))
+    time.sleep(0.2)
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(hel, "cyan"))))
-   time.sleep(0.3)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(hel, "cyan"))))
+    time.sleep(0.2)
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(He, "cyan"))))
-   time.sleep(0.3)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(He, "cyan"))))
+    time.sleep(0.2)
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
-   time.sleep(0.3)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
+    time.sleep(0.2)
 
-   main.uclear()
-   print(Center.XCenter(Center.YCenter(colored('', "cyan"))))
-   time.sleep(0.3)
+    main.uclear()
+    print(Center.XCenter(Center.YCenter(colored('', "cyan"))))
+    time.sleep(0.2)
+  else:
+    pass

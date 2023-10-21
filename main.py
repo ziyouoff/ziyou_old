@@ -121,7 +121,7 @@ def uclear():
 
 def start_serch_name():
     import serch_name
-    fio = input(colored("[+]Введите имя: ", "cyan"))
+    fio = input(Center.XCenter(colored("[+]Введите имя: ", "cyan")))
 
     serch_name.pasports_1(fio)
     serch_name.tele2_1_06_22(fio)
@@ -133,7 +133,7 @@ def start_serch_name():
 
 def start_serch_phone():
     import serch_phone
-    phone = input(colored("[+]Введите номер телефона для поиска(без +): ", "cyan"))
+    phone = input(Center.XCenter(colored("[+]Введите номер телефона для поиска(без +): ", "cyan")))
     
     serch_phone.tele2_1_06_22(phone)
     serch_phone.zdravcity_1_01_23(phone)
@@ -145,7 +145,7 @@ def start_serch_phone():
 def start_serch_telegram():
     import serch_telegram
     print(colored(baners.telegram_logo, "cyan"))
-    uid = input(colored("[+]Введите user_name пользователя: ", "cyan"))
+    uid = input(Center.XCenter(colored("[+]Введите user_name пользователя: ", "cyan")))
 
     serch_telegram.find_phone_by_uid_1(uid)
     serch_telegram.find_phone_by_uid_2(uid)
@@ -164,13 +164,14 @@ def start_serch():
     print(Center.XCenter(colored('├[b] - Вернутся                    │', "yellow")))
     print(Center.XCenter(colored('└──────────────────────────────────┘', "yellow")))
 
-    select_info_type = input(colored("""\n[+]>""", 'cyan'))
+    select_info_type = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+    import serch_phone
+    import serch_name
+    import serch_telegram
 
-    if select_info_type == '1': start_serch_phone()
-    elif select_info_type == '2': start_serch_name()
-    elif select_info_type == '3': start_serch_telegram()
-
-    elif select_info_type == 'b': main_menu()
+    if select_info_type == '1': serch_phone.start_serch()
+    elif select_info_type == '2': serch_name.start_serch()
+    elif select_info_type == '3': serch_telegram.start_serch()
 
 ############################################################
 ############################################################

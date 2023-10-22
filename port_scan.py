@@ -1,4 +1,7 @@
 import os
+import nmap as nm
+import scapy.all as scapy
+from scapy.layers import http
 
 from pystyle import Center
 try:
@@ -34,7 +37,9 @@ ports = {
     5432: "PostgreSQL", 5900: "VNC", 8080: "Tomcat", 10000: "Webmin", 
     666: 'DooM'}
 
-def chek_port(ip, port):
+
+def port_scan():
+    def chek_port(ip, port):
         try: port_name = ports[port]
         except:port_name = 'NN'
 
@@ -47,8 +52,6 @@ def chek_port(ip, port):
             #print(Center.XCenter(colored(f"[!]Порт {port} открыт", "red")))
             table.add_row(str(port), port_name, "✅open")
 
-
-def port_scan():
     ip = input(Center.XCenter(colored('[+]Введите ip для скана портов: ', "red")))
     count_port = [int(count_port) for count_port in input(Center.XCenter(colored('[+]Ввелиье количество портов для скана: ', "red"))).split(', ')]
     print(count_port)
@@ -61,22 +64,29 @@ def port_scan():
 
 
 
-def wifi_scan(ip):
-    try:
-        print(colored('nmap ' + str(ip) + '/24', "grey"))
-        os.system('nmap -sn ' + str(ip) + '/24')
-        
-    except:
-        os.system('apt install nmap')
+def wifi_scan():
+    pass
+
+
+
+def snif(interface):
+    scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet, filter="port 21")
+
+
+def process_sniffed_packet(packet):
+    if packet.haslayer(http.HTTPRequest):
+        print(packet)
 
 
 
 def main():
     print(Center.XCenter(colored('╔═══════════════════════════════╗', "cyan")))
-    print(Center.XCenter(colored('║        Cканер портов          ║', "cyan")))
+    print(Center.XCenter(colored('║             ZiMap             ║', "cyan")))
     print(Center.XCenter(colored('╠═══════════════════════════════╣', "cyan")))
     print(Center.XCenter(colored('║[1] - Сканер портов            ║', "cyan")))
     print(Center.XCenter(colored('║[2] - Просканировать WiFi сеть ║', "cyan")))
+    print(Center.XCenter(colored('║[3] - Snifer                   ║', "cyan")))
+    print(Center.XCenter(colored('║                               ║', "cyan")))
     print(Center.XCenter(colored('║[b] - Вернутся                 ║', "cyan")))
     print(Center.XCenter(colored('╚═══════════════════════════════╝', "cyan")))
     select = input(Center.XCenter(colored("""\n[+]Select> """, "red")))
@@ -99,12 +109,15 @@ def main():
 
         sekect_rout_ip = input(Center.XCenter(colored("""\n[+]Select> """, "cyan")))
         if sekect_rout_ip == '1':
-            wifi_scan('192.168.0.1')
+            wifi_scan()
         elif sekect_rout_ip == '2':
-            wifi_scan('192.168.1.1')
+            wifi_scan()
         elif sekect_rout_ip == '3':
             print(colored('Введите ip роутера', "blue"))
             sekect_other_rout_ip = input(colored("""\n[+]> """, "red"))
             wifi_scan(sekect_other_rout_ip)
+
+    elif select == '3':
+        snif('eth0')
 
     

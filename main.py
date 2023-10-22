@@ -1,9 +1,10 @@
 import os 
-import sys
+#import sys
 import pickle
 import baners
 import main
 import webbrowser
+from pathlib import Path
 
 try:
     from colorama import init, Fore
@@ -28,12 +29,15 @@ except:
     from termcolor import colored
 
 try:
-    from rich import print
+    from rich import print as rprint
     from rich.layout import Layout
+    from rich.panel import Panel
+    from rich.tree import Tree
 except:
     os.system('pip install rich')
-    from rich import print
+    from rich import print as rprint
     from rich.layout import Layout
+    from rich.tree import Tree
 
 ############################################################
 ############################################################
@@ -197,16 +201,84 @@ def start_serch():
 ############################################################
 ############################################################
 
+def tree():
+    main_tree = Tree("Files", style="red")
+    src_tree = Tree('/src/', style="red")
+    YaEda_tree = Tree('/src/YaEda', style="red")
+
+    directory = os.path.dirname(os.path.abspath(__file__))
+    files = os.listdir(directory)
+    for i in files:
+        if os.path.splitext(i)[1] == '.py':
+            main_tree.add('🐍' + i, style='green')
+        elif os.path.splitext(i)[1] == '.md' or os.path.splitext(i)[1] == '.txt':
+            main_tree.add('📄' + i, style="cyan")
+        else:
+            main_tree.add('📁' + i, style="yellow")
+
+
+    directory = 'src'
+    files = os.listdir(directory)
+    for i in files:
+        if os.path.splitext(i)[1] == '.py':
+            src_tree.add('🐍' + i, style='green')
+        elif os.path.splitext(i)[1] == '.md' or os.path.splitext(i)[1] == '.txt' or os.path.splitext(i)[1] == '.csv':
+            src_tree.add('📄' + i, style="cyan")
+        else:
+            src_tree.add('📁' + i, style="yellow")
+
+    directory = 'src//YaEda'
+    files = os.listdir(directory)
+    for i in files:
+        if os.path.splitext(i)[1] == '.py':
+            YaEda_tree.add('🐍' + i, style='green')
+        elif os.path.splitext(i)[1] == '.md' or os.path.splitext(i)[1] == '.txt' or os.path.splitext(i)[1] == '.csv':
+            YaEda_tree.add('📄' + i, style="cyan")
+        else:
+            YaEda_tree.add('📁' + i, style="yellow")
+
+    layout = Layout()
+    layout.split_column(
+        Layout(name="upper")
+    )
+
+    layout["upper"].split_row(
+        Layout(name="root"),
+        Layout(name="src"),
+        Layout(name="YaEda")
+    )
+
+    layout["root"].split(
+        Layout(Panel(main_tree, title='root/ziyou/'))
+    )
+
+    layout["src"].split(
+        Layout(Panel(src_tree, title='/src/'))
+    )
+
+    layout["YaEda"].split(
+        Layout(Panel(YaEda_tree, title='/src/YaEda/'))
+    )
+
+    rprint(layout)
+
+
+    
+        
+############################################################
+############################################################
+############################################################
+
 def install():
     if os.path.exists("src/"):
         print(Center.XCenter(colored("[OK]src cоздан", "grey")))
     else:
         os.system('mkdir src')
-            
+
     print(Center.XCenter(colored('┌────────────────────────────────────────────────────────────┐', "yellow")))
     print(Center.XCenter(colored('│                        Установщик                          │', "yellow")))
     print(Center.XCenter(colored('├────────────────────────────────────────────────────────────┤', "yellow")))
-    print(Center.XCenter(colored('│       B1 - Установить       |         D1 - Удалить         │', "yellow")))
+    print(Center.XCenter(colored('│  [B1] - Установить  |  [D1] - Удалить  │ [T] - Дерево      │', "yellow")))
     print(Center.XCenter(colored('├────────────────────────────────────────────────────────────┤', "yellow")))
     print(Center.XCenter(colored('│ В случае ошибок, неработы баз или ошибки при установки     │', "yellow")))
     print(Center.XCenter(colored('│ проверте наличие папки src и ее содержимого                │', "yellow")))
@@ -239,6 +311,9 @@ def install():
 
     install_input = input(Center.XCenter(colored("""\n[+]Select>""", 'red')))
 
+    if install_input == 'T':
+        tree()
+        install()
 
     try: 
         if install_input == 'L1': 
@@ -830,7 +905,7 @@ def main_menu():
 
     elif select == 'e':
         baners.print_bye_bye()
-        sys.exit()
+        exit()
 
     
     else: 
@@ -890,12 +965,12 @@ elif in_pw == 'L':
 
 elif in_pw == 'E':
     uclear()
-    sys.exit()
+    exit
 
 else:
     uclear()
     print(Center.XCenter(Center.YCenter(colored('╔═════════════════════╗', 'red'))))
     print(Center.XCenter(colored('║[!]НЕВЕРНЫЙ ПАРОЛЬ!!!║', 'red')))
     print(Center.XCenter(colored('╚═════════════════════╝', 'red')))
-    sys.exit()
+    exit()
     

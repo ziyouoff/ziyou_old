@@ -437,7 +437,7 @@ def print_ascll_setings():
 def print_hello():
   import main
   import time
-  if main.data['hello_anim'] == 1:
+  if main.data['hello_anim'] == '1':
     main.uclear()
     print(Center.XCenter(Center.YCenter(colored(H, "cyan"))))
     time.sleep(0.4)

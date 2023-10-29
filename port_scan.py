@@ -1,24 +1,20 @@
 import os
+import main
 import nmap as nm
-import scapy.all as scapy
-from scapy.layers import http
+from main import uclear
+from rich.console import Console
+from rich import print as rprint
+from termcolor import colored
+from pystyle import Center
+from rich.console import Console
+from rich.table import Table
+from rich.spinner import Spinner
 
 from pystyle import Center
 try:
     import socket
 except:
     os.system('pip install socket')
-
-from termcolor import colored
-from pystyle import Center
-
-try:
-    from rich.console import Console
-    from rich.table import Table
-except:
-    os.system('pip install Rich')
-    from rich.console import Console
-    from rich.table import Table
 
 table = Table(title="PORTS")
 table.add_column("port", style="cyan", no_wrap=True)
@@ -39,6 +35,7 @@ ports = {
 
 
 def port_scan():
+    console = Console()
     def chek_port(ip, port):
         try: port_name = ports[port]
         except:port_name = 'NN'
@@ -46,21 +43,23 @@ def port_scan():
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         if client.connect_ex((ip, port)):
-            #print(Center.XCenter(colored(f"[!]Порт [{port} - {port_name}] закрыт", "green")))
             table.add_row(str(port), port_name, "⛔close")
+
         else:
-            #print(Center.XCenter(colored(f"[!]Порт {port} открыт", "red")))
             table.add_row(str(port), port_name, "✅open")
 
     ip = input(Center.XCenter(colored('[+]Введите ip для скана портов: ', "red")))
     count_port = [int(count_port) for count_port in input(Center.XCenter(colored('[+]Ввелиье количество портов для скана: ', "red"))).split(', ')]
     print(count_port)
 
+    
     for i in count_port:
         chek_port(ip, i)
-
-    console = Console()
-    console.print(table, justify='center')
+        uclear()
+        print('\n\n\n\n\n\n\n\n')
+        console.print('ip: ' + str(ip) + '       ports: ' + str(count_port), justify="center", style="red")
+        console.print(table, justify='center')
+    
 
 
 
@@ -68,27 +67,26 @@ def wifi_scan():
     pass
 
 
-
-def snif(interface):
-    scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet, filter="port 21")
-
-
-def process_sniffed_packet(packet):
-    if packet.haslayer(http.HTTPRequest):
-        print(packet)
+def snifer():
+    os.system('sudo python snifer.py')
 
 
 
 def main():
-    print(Center.XCenter(colored('╔═══════════════════════════════╗', "cyan")))
-    print(Center.XCenter(colored('║             ZiMap             ║', "cyan")))
-    print(Center.XCenter(colored('╠═══════════════════════════════╣', "cyan")))
-    print(Center.XCenter(colored('║[1] - Сканер портов            ║', "cyan")))
-    print(Center.XCenter(colored('║[2] - Просканировать WiFi сеть ║', "cyan")))
-    print(Center.XCenter(colored('║[3] - Snifer                   ║', "cyan")))
-    print(Center.XCenter(colored('║                               ║', "cyan")))
-    print(Center.XCenter(colored('║[b] - Вернутся                 ║', "cyan")))
-    print(Center.XCenter(colored('╚═══════════════════════════════╝', "cyan")))
+    console = Console()
+    
+ 
+    console.print('╔════════════════════════════════╗', justify='center', style='yellow')
+    console.print('║              ZiMap             ║', justify='center', style='yellow')
+    console.print('╠════════════════════════════════╣', justify='center', style='yellow')
+    console.print('║ [1] - Сканер портов            ║', justify='center', style='yellow')
+    console.print('║ [2] - Просканировать WiFi сеть ║', justify='center', style='yellow')
+    console.print('║ [3] - Snifer                   ║', justify='center', style='yellow')
+    console.print('║                                ║', justify='center', style='yellow')
+    console.print('║ (b) - Вернутся                 ║', justify='center', style='yellow')
+    console.print('╚════════════════════════════════╝', justify='center', style='yellow')
+    
+
     select = input(Center.XCenter(colored("""\n[+]Select> """, "red")))
 
     if select == 'b':
@@ -118,6 +116,6 @@ def main():
             wifi_scan(sekect_other_rout_ip)
 
     elif select == '3':
-        snif('eth0')
+        snifer()
 
     

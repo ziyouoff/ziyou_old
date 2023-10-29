@@ -30,12 +30,14 @@ except:
 
 try:
     from rich import print as rprint
+    from rich.console import Console
     from rich.layout import Layout
     from rich.panel import Panel
     from rich.tree import Tree
 except:
     os.system('pip install rich')
     from rich import print as rprint
+    from rich.console import Console
     from rich.layout import Layout
     from rich.tree import Tree
 
@@ -43,6 +45,7 @@ except:
 ############################################################
 ############################################################
 def setings():
+    uclear()
     global data
 
     with open('save', 'rb') as file:
@@ -104,8 +107,6 @@ def setings():
         with open("save","wb") as save:
             pickle.dump(data,save)
         setings()
-
-
      
 
 ############################################################
@@ -191,11 +192,11 @@ def start_serch():
     select_info_type = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
     import serch_phone
     import serch_name
-    import serch_telegram
+    import tgtonum
 
     if select_info_type == '1': serch_phone.start_serch()
     elif select_info_type == '2': serch_name.start_serch()
-    elif select_info_type == '3': serch_telegram.start_serch()
+    elif select_info_type == '3': tgtonum.start_serch_telegram()
 
 ############################################################
 ############################################################
@@ -313,6 +314,21 @@ def install():
 
     if install_input == 'T':
         tree()
+        install()
+
+    elif install_input == '4090':
+        import baners
+        import time
+        from rich.progress import track
+
+        print(Center.XCenter(baners.RTX4090))
+
+        for i in track(range(20), description=Center.XCenter("[+]INSTALING RTX 4090")):
+            time.sleep(1)
+        data['ach_RTX'] = '1'
+        with open("save","wb") as save:
+            pickle.dump(data,save)
+        print('fxbdrf dsgjkytyf')
         install()
 
     try: 
@@ -643,15 +659,16 @@ def install():
     
 
 def main_menu():
+    uclear()
     baners.print_start()
-    mm_1 =  colored('┌────────────────────────────────────────────────────┐', "red").center(20)
+    mm_1 =  colored('┌────────────────────────────────────────────────────┐', "red")
     mm_2 =  colored('|                    Главное Меню                    |', "red")
     mm_3 =  colored('├──────────────────────────┬─────────────────────────┤', "red")
     mm_4 =  colored('├[e] - exit                ├[i] - info               |', "red")
     mm_5 =  colored('├[s] - setings             ├[d] - install            |', "red")
     mm_6 =  colored('├[1] - Узнать ip telegram  ├[6] - WiFite 3           |', "cyan")
     mm_7 =  colored('├[2] - ZiMap               ├[7] - Пробив по базам    |', 'blue')
-    mm_8 =  colored('├[3] - SMS-Bomber          ├[8] - DDoS               |', 'cyan')
+    mm_8 =  colored('├[3] - SMS-Bomber          ├[8] - DoS                |', 'cyan')
     mm_9 =  colored('├[4] - FlipperNull         ├[9] - AirDos             |', 'blue')
     mm_10 = colored('├[5] - SQLmap              ├[10] - ???               |', 'cyan')
     mm_11 = colored('└──────────────────────────┸─────────────────────────┘', "blue")
@@ -674,18 +691,15 @@ def main_menu():
     select = input(Center.XCenter(colored("""\n[+]Select> """, "red")))
 
     
-#################################################
-
-    if select == '1': 
-        from tgip import main
-        uclear()
+###########################################################################################
+                                                                                          
+    if select == '1':                                                                     
+        from tgip import main                                                             
+        uclear()                                                                          
         baners.print_start()
         main()
                     
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -697,16 +711,13 @@ def main_menu():
             baners.print_bye_bye
             exit
 	
-#################################################
+###########################################################################################
 
     elif select == '2':
         import port_scan
         port_scan.main()
 
-        print(Center.XCenter(colored('   ╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('   ║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('   ║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('   ╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -726,10 +737,7 @@ def main_menu():
         baners.print_start()
         start_bomber()
             
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -749,10 +757,7 @@ def main_menu():
         baners.print_start()
         FlipperNull()
             
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -769,10 +774,7 @@ def main_menu():
     elif select == '5':
         print(colored('[!]В разарботке', "red"))
             
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -790,10 +792,7 @@ def main_menu():
         uclear()
         start_serch()
             
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -811,10 +810,7 @@ def main_menu():
         uclear()
         start_serch()
             
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -833,10 +829,7 @@ def main_menu():
         uclear()
         ddos.start_DDoS()
             
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -853,10 +846,7 @@ def main_menu():
     elif select == '9':
         print(colored('[!]В разарботке', "red"))
             
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -875,10 +865,7 @@ def main_menu():
             data = pickle.load(file)  
             print(data['devise'])
 
-        print(Center.XCenter(colored('╔══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║[1] - Вернутся в меню ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - Выход           ║', "cyan")))
-        print(Center.XCenter(colored('╚══════════════════════╝', "cyan")))
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
 
         mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
 
@@ -901,9 +888,19 @@ def main_menu():
 
     elif select == 'i': 
         baners.soft_info()
-        main_menu()
+        console.print(baners.menu_or_exit_text, style='cyan', justify='center')
+        mrnu_or_exit = input(Center.XCenter(colored("""\n[+]Select>""", 'cyan')))
+
+        if mrnu_or_exit == '1':
+            baners.print_start()
+            main_menu()
+
+        elif mrnu_or_exit == '2':
+            baners.print_bye_bye()
+            exit
 
     elif select == 'e':
+        uclear()
         baners.print_bye_bye()
         exit()
 
@@ -944,14 +941,18 @@ print(Center.XCenter(colored('╚═══════════════�
 print('\n\n\n')                            
 in_pw = input(Center.XCenter(colored('[@]ВВЕДИТЕ ПАРОЛЬ: ', 'red')))
 if in_pw == 'pepe776':
-
+    console = Console()
     try:
         with open('save', 'rb') as file:
             data = pickle.load(file)
     except:
         data = {'devise': 'M',
                 'base_out': 'T',
-                'hello_anim': '1'}
+                'hello_anim': '1',
+                'version': '1.6.0',
+
+                'ach_RTX': '0',
+                'ach_kali': '0'}
         
         with open("save","wb") as save:
             pickle.dump(data,save)

@@ -105,51 +105,12 @@ def soft_info():
 
     rprint(layout)
 
-    #layout["up_left"].update(console.print(NOT_READ_ME))
-#
-    #layout["up_right"].update(
-    #  console.print('''
-    #  ╔══════════════════════╗
-    #  ║        Колдун        ║
-    #  ╚══════════════════════╝
-    #'''))
-#
-    
-#
-    #
-#
-    #layout["up_left"].update(console.print(NOT_READ_ME, style="yellow"),
-    #  console.print('''
-    #  ╔══════════════════════╗
-    #  ║        Колдун        ║ 
-    #  ╚══════════════════════╝
-    #  ''', style="red"),)
-#
-    #ach_color = '#696969'
-    #if main.data['ach_RTX'] == '1':
-    #    ach_color = 'yellow'
-#
-    #layout["low_left"].split(
-    #  console.print(ach, style='cyan'),
-    #  console.print(RTX4090_ach, style=ach_color)
-    #)
-
-    
-
-
- 
 
 menu_or_exit_text = '''
 ╔══════════════════════╗
 ║[1] - Вернутся в меню ║
 ║[2] - Выход           ║
 ╚══════════════════════╝
-'''
-
-Bye = f'''
-╔╗ ┬ ┬┌─┐
-╠╩╗└┬┘├┤ 
-╚═╝ ┴ └─┘
 '''
 
 Bye_Bye = f'''

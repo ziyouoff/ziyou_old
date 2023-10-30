@@ -16,6 +16,10 @@ try:
 except:
     os.system('pip install socket')
 
+#############################################################
+#############################################################
+#############################################################
+
 table = Table(title="PORTS")
 table.add_column("port", style="cyan", no_wrap=True)
 table.add_column("name", style="magenta")
@@ -61,15 +65,74 @@ def port_scan():
         console.print(table, justify='center')
     
 
+#############################################################
+#############################################################
+#############################################################
 
 
 def wifi_scan():
-    pass
+    print(Center.XCenter(colored('╔═══════════════════════╗', "cyan")))
+    print(Center.XCenter(colored('║Введите ip роутера     ║', "cyan")))
+    print(Center.XCenter(colored('╠═══════════════════════╣', "cyan")))
+    print(Center.XCenter(colored('║[1] - 192.168.0.1      ║', "cyan")))
+    print(Center.XCenter(colored('║[2] - 192.168.1.1      ║', "cyan")))
+    print(Center.XCenter(colored('║[3] - Свое             ║', "cyan")))
+    print(Center.XCenter(colored('╚═══════════════════════╝', "cyan")))
+    sekect_rout_ip = input(Center.XCenter(colored("""\n[+]Select> """, "cyan")))
+    if sekect_rout_ip == '1':
+        wifi_scan()
+    elif sekect_rout_ip == '2':
+        wifi_scan()
+    elif sekect_rout_ip == '3':
+        print(colored('Введите ip роутера', "blue"))
+        sekect_other_rout_ip = input(colored("""\n[+]> """, "red"))
+        wifi_scan(sekect_other_rout_ip)
+
+
+#############################################################
+#############################################################
+#############################################################
 
 
 def snifer():
     os.system('sudo python snifer.py')
 
+#############################################################
+#############################################################
+#############################################################
+
+def arp_request():
+    import scapy.all as scapy
+
+    console = Console()
+    arp_table = Table(title="ARP request")
+    arp_table.add_column("port", style="cyan", no_wrap=True)
+    arp_table.add_column("name", style="magenta")
+
+    os.system('ifconfig')
+
+    def scan(ip):
+        arp = scapy.ARP(pdst=ip)
+        broadcast = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
+        arp_request_broadcast = broadcast/arp
+        answered_list, ununswered_list = scapy.srp(arp_request_broadcast, timeout=2)
+
+        for element in answered_list:
+            table.add_row(str(element[1].psrc), str(element[1].hwsrc))
+            uclear()
+            console.print('ip: ' + str(ip))
+            console.print(table, justify='center')
+
+            #print(element[1].psrc)
+            #print(element[1].hwsrc)
+            #print('====================================================')
+
+    ip = input(Center.XCenter(colored('Введите локальный ip сети: ', "red")))
+    scan(ip)
+
+#############################################################
+#############################################################
+#############################################################
 
 
 def main():
@@ -82,6 +145,7 @@ def main():
     console.print('║ [1] - Сканер портов            ║', justify='center', style='yellow')
     console.print('║ [2] - Просканировать WiFi сеть ║', justify='center', style='yellow')
     console.print('║ [3] - Snifer                   ║', justify='center', style='yellow')
+    console.print('║ [4] - ARP запрос               ║', justify='center', style='yellow')
     console.print('║                                ║', justify='center', style='yellow')
     console.print('║ (b) - Вернутся                 ║', justify='center', style='yellow')
     console.print('╚════════════════════════════════╝', justify='center', style='yellow')
@@ -97,25 +161,12 @@ def main():
         port_scan()
 
     elif select == '2':
-        print(Center.XCenter(colored('╔═══════════════════════╗', "cyan")))
-        print(Center.XCenter(colored('║Введите ip роутера     ║', "cyan")))
-        print(Center.XCenter(colored('╠═══════════════════════╣', "cyan")))
-        print(Center.XCenter(colored('║[1] - 192.168.0.1      ║', "cyan")))
-        print(Center.XCenter(colored('║[2] - 192.168.1.1      ║', "cyan")))
-        print(Center.XCenter(colored('║[3] - Свое             ║', "cyan")))
-        print(Center.XCenter(colored('╚═══════════════════════╝', "cyan")))
-
-        sekect_rout_ip = input(Center.XCenter(colored("""\n[+]Select> """, "cyan")))
-        if sekect_rout_ip == '1':
-            wifi_scan()
-        elif sekect_rout_ip == '2':
-            wifi_scan()
-        elif sekect_rout_ip == '3':
-            print(colored('Введите ip роутера', "blue"))
-            sekect_other_rout_ip = input(colored("""\n[+]> """, "red"))
-            wifi_scan(sekect_other_rout_ip)
+        wifi_scan()
 
     elif select == '3':
         snifer()
 
-    
+    elif select == '4':
+        arp_request()
+
+main()

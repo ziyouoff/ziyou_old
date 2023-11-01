@@ -9,6 +9,7 @@ from pystyle import Center
 from rich.console import Console
 from rich.table import Table
 from rich.spinner import Spinner
+from datetime import datetime
 
 from pystyle import Center
 try:
@@ -61,7 +62,8 @@ def port_scan():
         chek_port(ip, i)
         uclear()
         print('\n\n\n\n\n\n\n\n')
-        console.print('ip: ' + str(ip) + '       ports: ' + str(count_port), justify="center", style="red")
+        console.print('ip: ' + str(ip), justify="center", style="red")
+        console.print('ports: ' + str(count_port), justify="center", style="red")
         console.print(table, justify='center')
     
 
@@ -71,36 +73,40 @@ def port_scan():
 
 
 def wifi_scan():
-    print(Center.XCenter(colored('╔═══════════════════════╗', "cyan")))
-    print(Center.XCenter(colored('║Введите ip роутера     ║', "cyan")))
-    print(Center.XCenter(colored('╠═══════════════════════╣', "cyan")))
-    print(Center.XCenter(colored('║[1] - 192.168.0.1      ║', "cyan")))
-    print(Center.XCenter(colored('║[2] - 192.168.1.1      ║', "cyan")))
-    print(Center.XCenter(colored('║[3] - Свое             ║', "cyan")))
-    print(Center.XCenter(colored('╚═══════════════════════╝', "cyan")))
-    sekect_rout_ip = input(Center.XCenter(colored("""\n[+]Select> """, "cyan")))
-    if sekect_rout_ip == '1':
-        wifi_scan()
-    elif sekect_rout_ip == '2':
-        wifi_scan()
-    elif sekect_rout_ip == '3':
-        print(colored('Введите ip роутера', "blue"))
-        sekect_other_rout_ip = input(colored("""\n[+]> """, "red"))
-        wifi_scan(sekect_other_rout_ip)
+    net = input("Enter the IP address: ")
+    net1 = net.split('.')
+    a = '.'
+
+    net2 = net1[0] + a + net1[1] + a + net1[2] + a
+    st1 = int(input("Enter the Starting Number: "))
+    en1 = int(input("Enter the Last Number: "))
+    en1 = en1 + 1
+    t1 = datetime.now()
+
+    def scan(addr):
+       s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+       socket.setdefaulttimeout(1)
+       result = s.connect_ex((addr,135))
+       if result == 0:
+          return 1
+       else :
+          return 0
+
+    def run1():
+       for ip in range(st1,en1):
+          addr = net2 + str(ip)
+          if (scan(addr)):
+             print (addr , "is live")
+
+    run1()
+    t2 = datetime.now()
+    total = t2 - t1
+    print ("Scanning completed in: " , total)
 
 
 #############################################################
 #############################################################
 #############################################################
-
-
-def snifer():
-    os.system('sudo python snifer.py')
-
-#############################################################
-#############################################################
-#############################################################
-
 def arp_request():
     import scapy.all as scapy
 
@@ -134,6 +140,39 @@ def arp_request():
 #############################################################
 #############################################################
 
+def ArpSpoofer():
+    import arp
+
+    uclear()
+    print("\n\n\n\n\n\n\n")
+    console = Console()
+    console.print('╔════════════════════════════════════════╗       ╔════════════════════════════════════════╗', justify="center", style="yellow")
+    console.print('║           ArpSpoof атака это           ║       ║          Системные требования          ║', justify="center", style="yellow")
+    console.print('╠════════════════════════════════════════╣       ╠════════════════════════════════════════╣', justify="center", style="yellow")
+    console.print('║ ArpSpoof Атака Предназначается для     ║       ║ 1) Unix система (kali, ubunt, и.т.д)   ║', justify="center", style="yellow")
+    console.print('║ перехвата трафика в локальной сети     ║       ║ Для запуска на телефоне - KaliNetHunter║', justify="center", style="yellow")
+    console.print('║ представляясь для атакуймого устройста ║       ║ 2) root права (В unix системах с этим  ║', justify="center", style="yellow")
+    console.print('║ Роутером, а для роутера атакуймым      ║       ║ Проблем нет                            ║', justify="center", style="yellow")
+    console.print('║ устройством                            ║       ║ 3) Ввести перед запуском команду       ║', justify="center", style="yellow")
+    console.print('║                                        ║       ║ echo 1 > /proc/sys/net/ipv4/ip_forward ║', justify="center", style="yellow")
+    console.print('╚════════════════════════════════════════╝       ╚════════════════════════════════════════╝', justify="center", style="yellow")
+    console.print('Что бы продлжить введите enter', justify="center", style="cyan")
+    enter = input(Center.XCenter())
+    arp.ArpSpooferMain()
+
+#############################################################
+#############################################################
+#############################################################
+
+def snifer():
+    os.system('sudo python snifer.py')
+
+#############################################################
+#############################################################
+#############################################################
+
+
+
 
 def main():
     console = Console()
@@ -144,8 +183,8 @@ def main():
     console.print('╠════════════════════════════════╣', justify='center', style='yellow')
     console.print('║ [1] - Сканер портов            ║', justify='center', style='yellow')
     console.print('║ [2] - Просканировать WiFi сеть ║', justify='center', style='yellow')
-    console.print('║ [3] - Snifer                   ║', justify='center', style='yellow')
-    console.print('║ [4] - ARP запрос               ║', justify='center', style='yellow')
+    console.print('║ [3] - ARP запрос               ║', justify='center', style='yellow')
+    console.print('║ [4] - ArpSpoofer               ║', justify='center', style='yellow')
     console.print('║                                ║', justify='center', style='yellow')
     console.print('║ (b) - Вернутся                 ║', justify='center', style='yellow')
     console.print('╚════════════════════════════════╝', justify='center', style='yellow')
@@ -164,9 +203,9 @@ def main():
         wifi_scan()
 
     elif select == '3':
-        snifer()
+        arp_request()
 
     elif select == '4':
-        arp_request()
+        ArpSpoofer()
 
 main()

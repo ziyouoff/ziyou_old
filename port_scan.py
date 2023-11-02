@@ -124,7 +124,7 @@ def arp_request():
         answered_list, ununswered_list = scapy.srp(arp_request_broadcast, timeout=2)
 
         for element in answered_list:
-            table.add_row(str(element[1].psrc), str(element[1].hwsrc))
+            arp_table.add_row(str(element[1].psrc), str(element[1].hwsrc))
             uclear()
             console.print('ip: ' + str(ip))
             console.print(table, justify='center')
@@ -133,7 +133,7 @@ def arp_request():
             #print(element[1].hwsrc)
             #print('====================================================')
 
-    ip = input(Center.XCenter(colored('Введите локальный ip сети: ', "red")))
+    ip = input(Center.XCenter(colored('Введите ip >> ', "red")))
     scan(ip)
 
 #############################################################

